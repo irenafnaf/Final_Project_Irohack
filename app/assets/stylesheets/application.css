@@ -13,3 +13,124 @@
  *= require_tree .
  *= require_self
  */
+
+ body {
+	background-image: url('background.jpg');
+	background-repeat: no-repeat;
+	background-size: 100%;
+	font-color: #666667;
+
+}
+
+.container-fluid {
+	margin-top: 20px;
+	margin-bottom: 10px;
+
+}
+
+.center-block {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 25px;
+    width: 45%;
+ }
+
+ .display-board {
+ 	z-index: 1;
+    position: absolute;
+ 	display: block;
+    margin-left: 17%;
+    margin-right: auto;
+    margin-bottom: 25px;
+    margin-top: -11px;
+    width: 50%;
+}
+
+
+ .bar {
+ 	z-index: 11;
+ 	mix-blend-mode: multiply;
+ 	position: absolute;
+ 	margin-top: -10px;
+ }
+
+footer {
+	position: relative;
+	display: block;
+	width: 100%;
+	margin: 0 auto;
+	z-index: 100;
+	box-sizing: border-box;
+	bottom: -442px;
+}
+
+.footer-inner{
+	position: relative;
+}
+
+.clearfix {
+	display: block;
+}
+
+.footer-top-holder{
+	background-color: white;
+
+}
+
+.container {
+	padding: 0;
+	width: 100%;
+	z-index: 100;
+	position: relative;
+}
+
+.container-inner {
+	margin: 0 auto;
+	position: relative;
+	padding: 65px 0 57px;
+}
+
+.three-columns {
+/*	width: 33.33%;
+	float: left;*/
+}
+
+.three-columns-inner {
+	margin: 0 -40px;
+}
+
+.column{
+	border-right: 1px solid #666667;
+	width: 33.33%;
+	float: left;
+}
+
+
+.column-inner {
+	padding: 0 40px;
+}
+
+.widget {
+	margin: 0;
+}
+
+.logo {
+	max-width: 332px;
+	margin-bottom: 14px;
+	height: auto;
+}
+
+.footer-widget-title {
+	color: #666667;
+}
+
+.menu {
+	font-size: 14px;
+	color: #666667;
+}
+
+
+ 
+
+

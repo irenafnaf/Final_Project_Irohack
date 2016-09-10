@@ -1,3 +1,123 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// .container {
+// 	height: 158px;
+// 	left: 50%;
+// 	right: 50%;
+// 	margin-top: -10px;
+// 	z-index: 9;
+// }
+
+ .buttons-bar{
+    z-index: 10;
+    display: block;
+    margin-left: 25%;
+    margin-right: auto;
+    margin-bottom: 25px;
+    width: 50%;
+    position: relative;
+    margin-top: -11px;
+ }
+
+ .clients-text {
+ 	z-index: 8;
+ 	visibility: hidden;
+ 	display: block;
+ 	position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 25px;
+    margin-top: -15px;
+    width: 50%;
+    background-color: white;
+    height: 357px;
+    left: 367px;
+    border-radius: 25px;
+    border-color: grey;
+    overflow-y: scroll;
+ }
+
+ #js-clients{
+ 	z-index: 10;
+ 	color: #666667;
+ 	margin-top: 23px;
+ 	list-style-type: none;
+
+
+ }
+
+.js-one-client:hover {
+	 cursor: pointer;
+     color: #3b4ba0;
+     text-decoration:underline;
+}
+
+
+ #welcome {
+ 	z-index: 10;
+ 	position:relative;
+ 	color: #666667;
+ }
+
+ .slider.closed {
+	max-height: 0;
+}
+
+
+ .slider {
+ 	z-index: 10;
+ 	display: inline-block;
+ 	position: absolute;
+ 	overflow-y: hidden;
+	max-height: 158px; /* approximate max height */
+	margin-left: 5px;
+
+	transition-property: all;
+	transition-duration: .6s;
+	transition-timing-function: ease-out;
+ }
+
+  .projects-slider.closed {
+	max-height: 0;
+}
+
+ .projects-slider {
+ 	z-index: 9;
+ 	display: inline-block;
+ 	position: absolute;
+ 	background-image: url("/assets/projects_slideout.png");
+ 	width: 563px;
+ 	height: 452px;
+ 	top: 211px;
+ 	left: 45%;
+ 	overflow-y: hidden;
+	max-height: 452px; /* approximate max height */
+	margin-left: 5px;
+
+	transition-property: all;
+	transition-duration: .6s;
+	transition-timing-function: ease-out;
+ }
+
+ .clients-projects {
+ 	margin-top: 122px;
+ 	color: #666667;
+ 	position: absolute;
+ }
+
+ .bottom-nav-bar {
+ 	position: relative;
+    float: right;
+    bottom: -371px;
+    z-index: 100;
+ }
+
+
+
+
+
+
+
+

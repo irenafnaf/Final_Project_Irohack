@@ -1,8 +1,35 @@
-<h1> Welcome to your Dashboard <%= @user.name %> </h1>
+
+	<div class="buttons-bar">
+		<input type="image" src= "/assets/addclient_button.png" class="add-client"> </input> 
+		<input type="image" src= "/assets/addpricing_button.png" class="add-pricing"> </input> 
+		<input type="image" src= "/assets/clients_button.png" id="js-getclients"></input> 
+		
+		<div class="slider closed" id="slider">
+			<img src= "/assets/projects_button.png" id="js-projects-button">
+		</div>	
 
 
-<button class=" btn btn-primary" id="js-getclients"> Clients </button> <br>
+	</div>
 
-<ul id = "js-clients">
-</ul>
+
+<div class="projects-slider closed" id="projects-slider" > 
+	<ul  class="clients-projects">
+	</ul>
+</div>
+
+
+
+
+<!-- 			<h3 id="welcome"> Welcome, <%= @user.name %> </h3> 
+ -->
+<div class = "clients-text">
+
+			<ul id = "js-clients">
+			</ul>
+</div>
+
+<div class="bottom-nav-bar">
+	<input type="image" src= "/assets/logout_button.png" class="logout"> </input> 
+</div>
+
 
