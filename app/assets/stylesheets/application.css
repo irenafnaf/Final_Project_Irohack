@@ -123,11 +123,14 @@ footer {
 
 .footer-widget-title {
 	color: #666667;
+	text-align: center;
+
 }
 
 .menu {
 	font-size: 14px;
 	color: #666667;
+	text-align: center;
 }
 
 

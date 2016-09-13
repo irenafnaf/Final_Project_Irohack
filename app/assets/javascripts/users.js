@@ -27,6 +27,8 @@ $(document).on("ready", function(){
 		document.getElementById('projects-slider').classList.toggle('closed');
 	});
 
+	
+
 
 
 	function getClients(){
