@@ -19,3 +19,23 @@ clients = [
 clients.each do |name, email, user_id|
 	Client.create(name: name, email: email, user_id: user_id)
 end
+
+
+types = [
+	"Logo", "Stationery", "Business Card",
+	"Post Card",
+	"Flyer",
+	"Brochure",
+	"Print Advertisement",
+	"Hang Tag/Label",
+	"Photo Touch-ups/Corrections",
+	"Poster",
+	"Banner",
+	"Menu",
+	"Invitation",
+	"Web Design",
+]
+
+types.each do |name|
+	Type.create(name: name)
+end

@@ -4,7 +4,8 @@ $(document).on("ready", function(){
 		this.src="/assets/clients_button_mouseover.png"
 		}).mouseout(function(){
 		this.src="/assets/clients_button.png"
-	});
+		});
+	
 
 	// $("#welcome").animate({
 	// 							opacity: 0});
@@ -27,7 +28,7 @@ $(document).on("ready", function(){
 		document.getElementById('projects-slider').classList.toggle('closed');
 	});
 
-	
+
 
 
 

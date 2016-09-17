@@ -1,0 +1,66 @@
+// Place all the styles related to the client_views controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+ .buttons-bar{
+    z-index: 10;
+    display: block;
+    margin-left: 25%;
+    margin-right: auto;
+    margin-bottom: 25px;
+    width: 50%;
+    position: relative;
+    margin-top: -11px; 
+ }
+
+
+
+
+ .slider {
+ 	z-index: 10;
+ 	display: inline-block;
+ 	position: relative;
+	margin-left: 5px;
+
+
+ }
+
+
+.newproject-form {
+	z-index: 100;
+	position: relative;
+	width: 50%;
+	margin: 0 auto;
+	
+}
+
+#js-name {
+	width: 60%;
+}
+
+#js-description {
+	width: 60%;
+}
+
+#js-due_date {
+	width: 60%;
+}
+
+#js-submit {
+	width: 60%;
+}
+
+
+#js-one-dropdown {
+	display: block;
+}
+
+ .new-project-slider {
+ 	display: inline-block;
+ }
+
+ .add-type:hover {
+	 cursor: pointer;
+     color: #3b4ba0;
+     text-decoration:underline;
+}

@@ -1,0 +1,33 @@
+<div class="buttons-bar">
+
+	<div class="new-project-slider closed" id="new-project-slider">
+		<input type="image" src= "/assets/newproject_button.png" id="js-newproject"></input> 
+	</div>	
+
+	<div class="slider" id="slider">
+			<img src= "/assets/projects_button.png" id="js-projects-button">
+	</div>	
+</div>
+
+<div class="newproject-form" >
+<form id="js-newproject-form">
+	<input id="js-name" type="text" class="js-required" name="name" placeholder="Enter Name"> 
+	<br>
+	<div id="js-dropdowns">
+		<select id="js-one-dropdown" data-dropdown="0" class="js-required" style="width:60%;">
+			  <% @types.each do |type| %>
+			  <option id="js-type" value="<%=type.id%>"> <%=type.name%> </option>
+			  <% end %> 
+		</select>
+		
+	</div>
+	<p class="add-type"> Add Type </p>
+	<br>
+	<input id="js-description" type="text" class="js-required" name="description" placeholder="Description"> 
+	<br>
+	<input id="js-due_date" type="date" class="js-required" name="due_date" placeholder="Due Date">
+	<br>
+
+	<button id="js-submit" type="submit" value="Submit"> Submit </button>
+</form> 
+</div>
