@@ -45,13 +45,42 @@ $(document).on("ready", function(){
 	$("#js-newproject-form").on("submit", function(event){
 		event.preventDefault();
 		var typeIds = [];
-		
+		var clientId = $(this).data("client")
 		$("#js-dropdowns select").each(function(element) {
-			var selectedTypeIds = $(this).val()
-		selectedTypeIds.push(typeIds);
+			var selectedTypeIds = parseInt($(this).val())
+			typeIds.push(selectedTypeIds);
 		});
-		 console.log(typeIds);
-		
+
+		var emptycounter = 0
+		$("js-required").each(function(index, ele){
+			if ($(ele).val() === "") {
+					emptycounter++
+			};
+		});
+		if (emptycounter === 0){
+			var newProject = { project: {
+								client_id: clientId,
+								name: $("#js-name").val(),
+								type_ids: typeIds,
+								description: $("#js-description").val(),
+								due_date: $("#js-due_date").val()
+								}
+								
+							 }
+			console.log(newProject);
+			$.ajax({
+				type: "POST",
+				url: `http://localhost:3000/api/clients/${clientId}/projects`,
+				data: newProject,
+				success: function(success){
+				console.log("success!");
+				},
+				error: function(error){
+				console.log(error);
+				}
+			});
+		};
+	
 	});
 
 })
