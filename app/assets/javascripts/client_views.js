@@ -1,6 +1,6 @@
 $(document).on("ready", function(){
 
-	$("#js-getclients").mouseover(function(){
+	$("#js-newproject").mouseover(function(){
 		this.src="/assets/newproject_button_mouseover.png"
 		}).mouseout(function(){
 		this.src="/assets/newproject_button.png"
@@ -83,4 +83,65 @@ $(document).on("ready", function(){
 	
 	});
 
-})
+	$("#js-projects-button").mouseover(function(){
+		this.src="/assets/projects_button_mouseover.png"
+		}).mouseout(function(){
+		this.src="/assets/projects_button.png"
+	});
+
+
+	$("#js-projects-button").mouseover(function(){
+
+		var clientId = $("#projects-slider").data("client")
+		
+		$.ajax({
+			type: "GET",
+			url: `http://localhost:3000/api/clients/${clientId}/projects`,
+			success: function(response){
+				showProjects(response);
+				
+			},
+			error: 
+					function(error){
+				console.log(error);
+			}
+		});
+
+		document.getElementById('projects-slider').classList.toggle('closed');
+
+	});	
+
+
+	function showProjects(response){
+
+		console.log(response);
+
+		var $projectList = $(".clients-projects");
+		// $projectList.empty();
+
+		response.forEach(function(project){
+
+			var html = ` 						
+						<li  class= "js-one-project">
+							<p data-project-id=${project.id}
+							data-project-name=${project.name}> 
+							${project.name} </p>
+						</li>
+						`;
+
+			$projectList.append(html);
+		});
+
+
+	}
+
+	function projectsError(error){
+		console.log("Error!");
+		// console.log(error.responseText);
+	}
+
+	
+
+});
+
+

@@ -10,11 +10,12 @@
 </div>
 
 <div class="newproject-form" >
+<h1 class="headline">Create Your New Project</h1>
 <form id="js-newproject-form" data-client="<%=@client.id%>">
 	<input id="js-name" type="text" class="js-required" name="name" placeholder="Enter Name"> 
 	<br>
 	<div id="js-dropdowns">
-		<select id="js-one-dropdown" data-dropdown="0" class="js-required" style="width:60%;">
+		<select id="js-one-dropdown" data-dropdown="0" class="js-required form-control" style="width:60%;">
 			  <% @types.each do |type| %>
 			  <option id="js-type" value="<%=type.id%>"> <%=type.name%> </option>
 			  <% end %> 
@@ -22,7 +23,7 @@
 		
 	</div>
 	<p class="add-type"> Add Type </p>
-	<br>
+
 	<input id="js-description" type="text" class="js-required" name="description" placeholder="Description"> 
 	<br>
 	<input id="js-due_date" type="date" class="js-required" name="due_date" placeholder="Due Date">
@@ -30,4 +31,9 @@
 
 	<button id="js-submit" type="submit" value="Submit"> Submit </button>
 </form> 
+</div>
+
+<div class="projects-slider closed" id="projects-slider" data-client="<%=@client.id%>"> 
+	<ul  class="clients-projects">
+	</ul>
 </div>
