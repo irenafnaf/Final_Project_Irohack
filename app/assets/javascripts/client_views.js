@@ -158,15 +158,50 @@ $(document).on("ready", function(){
 
 	function showProjectInfo(response){
 		console.log(response);
-		// var $projectInfo = $(".project-info");
-		// $projectInfo.empty();
-
-		// var html = `<ul>
-		// 				<li> Project Name: ${response.project.name} </li>
-		// 				<li> Project Types: ${response.types.name} </li>
-		// 			</ul>	
-		// 			`;
-		// $projectInfo.append(html);
+		var $projectInfo = $(".project-info");
+		$projectInfo.empty();
+		var types = response.types
+		// console.log(types)
+		var all_types = "";
+		
+			types.forEach(function(type, idx, array){
+				// if type.last without comma else
+				if (idx === array.length - 1) {
+					all_types += (type.name)
+				} else {
+					all_types += (type.name + ", ")
+				}
+			});
+		var html = `<div class="info-content">
+						<div class="infoFieldLabel BoldText"> Project Name: </div>
+						<div class="infoResponse"> ${response.project.name} </div>  
+					</div>	
+					<div class="info-content">
+						<div class="infoFieldLabel BoldText"> Project Types: </div>
+						<div class="infoResponse"> ${all_types} </div>  
+					</div>	
+					<div class="info-content">
+						<div class="infoFieldLabel BoldText"> Due Date: </div>
+						<div class="infoResponse"> ${response.project.due_date} </div>  
+					</div>
+					<div class="info-content">
+						<div class="infoFieldLabel BoldText"> Description: </div>
+						<div class="infoResponse"> ${response.project.description} </div>  
+					</div>
+					<div class="info-content">
+						<div class="infoFieldLabel BoldText"> Project Status: </div>
+						<div class="infoResponse"> 
+							<select id="project-status-dropdown" class="form-control" style="width:60%;">
+								<option> In Design </option>
+								<option> Pending Design Approval </option>
+								<option> Return to Design </option>
+								<option> Approved </option>
+								<option> Cancel </option>
+							<select> Save	
+						 </div>  
+					</div>
+					`;
+		$projectInfo.append(html);
 	 }
 
 	

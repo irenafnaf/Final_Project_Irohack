@@ -147,3 +147,31 @@
     // margin-bottom: 25px;
     // margin-top: -456px;
 }
+
+.project-info {
+	display: block;
+}
+.info-content {
+    position: relative;
+    clear: both;
+    margin: 2px 10px 0px 10px;
+    min-width: 94%;
+}
+
+.infoFieldLabel {
+	float: left;
+    width: 20%;
+    position: relative;
+    padding: 0px 0px 0px 0px;
+    text-align: right;
+    vertical-align: middle;
+}
+
+.BoldText {
+	font-weight: bold !important;
+}
+
+.infoResponse {
+	margin-left: 200px;
+}
+
