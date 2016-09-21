@@ -128,3 +128,22 @@
  	position: absolute;
  	z-index: 150;
  }
+
+  .js-one-project:hover {
+	 cursor: pointer;
+     color: #3b4ba0;
+     text-decoration:underline;
+}
+
+.project-main-display-slider {
+	z-index: 10;
+ 	position: absolute;
+ 	// background-image: url("/assets/display_board.png");
+ 	display: block;
+	width: 968px;
+    height: 535px;
+    // margin-left: 17%;
+    // margin-right: auto;
+    // margin-bottom: 25px;
+    // margin-top: -456px;
+}

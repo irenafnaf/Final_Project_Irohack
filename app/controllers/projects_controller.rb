@@ -12,8 +12,16 @@ class ProjectsController < ApplicationController
 
 	def show
 		project = Project.find_by(id: params[:id])
+		types = 
+		if project.types != 0
+			project.types.all
+		else
+			"None"
+		end
+		project_types = {"project" => project,
+						  "types" => types}
 		if project
-			render json: project
+			render json: project_types
 		else
 			render json: {error: "Project Not Found"},
 			status: 404

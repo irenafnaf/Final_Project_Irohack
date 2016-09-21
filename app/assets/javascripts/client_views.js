@@ -117,15 +117,13 @@ $(document).on("ready", function(){
 		console.log(response);
 
 		var $projectList = $(".clients-projects");
-		// $projectList.empty();
-
+		$projectList.empty();
 		response.forEach(function(project){
 
 			var html = ` 						
-						<li  class= "js-one-project">
-							<p data-project-id=${project.id}
-							data-project-name=${project.name}> 
-							${project.name} </p>
+						<li  class= "js-one-project" data-project-id=${project.id}
+							data-project-name=${project.name}>
+							<p> ${project.name} </p>
 						</li>
 						`;
 
@@ -139,6 +137,37 @@ $(document).on("ready", function(){
 		console.log("Error!");
 		// console.log(error.responseText);
 	}
+
+	$(".clients-projects").on("click", ".js-one-project", function(event){
+		var projectName = $(event.currentTarget).data("project-name");
+		var projectId = $(event.currentTarget).data("project-id");
+		var clientId = $("#projects-slider").data("client");
+		console.log(projectName)
+		console.log(projectId)
+		$.ajax({
+			type: "GET",
+			url: `http://localhost:3000/api/clients/${clientId}/projects/${projectId}`,
+			success: function(response){
+				showProjectInfo(response);
+			},
+			error: function(error){
+				console.log(error);
+			}
+		});
+	});
+
+	function showProjectInfo(response){
+		console.log(response);
+		// var $projectInfo = $(".project-info");
+		// $projectInfo.empty();
+
+		// var html = `<ul>
+		// 				<li> Project Name: ${response.project.name} </li>
+		// 				<li> Project Types: ${response.types.name} </li>
+		// 			</ul>	
+		// 			`;
+		// $projectInfo.append(html);
+	 }
 
 	
 

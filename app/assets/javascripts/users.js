@@ -5,7 +5,7 @@ $(document).on("ready", function(){
 		}).mouseout(function(){
 		this.src="/assets/clients_button.png"
 		});
-	
+
 
 	// $("#welcome").animate({
 	// 							opacity: 0});
@@ -99,7 +99,7 @@ $(document).on("ready", function(){
 		console.log(response);
 
 		var $projectList = $(".clients-projects");
-		// $projectList.empty();
+		$projectList.empty();
 
 		response.forEach(function(project){
 
