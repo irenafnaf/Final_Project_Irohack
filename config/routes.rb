@@ -7,11 +7,14 @@ Rails.application.routes.draw do
   
   scope '/api' do
   	resources :clients, only: [:index] do
-  		resources :projects, except: [:new, :edit]
+  		resources :projects, except: [:new, :edit] do
+  			resources :thumbnails, only: [:create, :update, :delete]
+  		end
   	end
   end
 
   get '/api/types' => "types#index"
+
 
   
 end
