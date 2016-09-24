@@ -121,6 +121,12 @@ $(document).on("ready", function(){
 		// console.log(error.responseText);
 	}
 
+	
+
+	$(".clients-projects").on("click", ".js-one-project", function(){
+		document.getElementById('project-main-display-slider').classList.toggle('closed');
+	});
+
 	$(".clients-projects").on("click", ".js-one-project", function(event){
 		var projectName = $(event.currentTarget).data("project-name");
 		var projectId = $(event.currentTarget).data("project-id");
@@ -155,7 +161,8 @@ $(document).on("ready", function(){
 					all_types += (type.name + ", ")
 				}
 			});
-		var html = `<div class="info-content">
+		var html = `<div class="container-space"></div>
+					<div class="info-content">
 						<div class="infoFieldLabel BoldText"> Project Name: </div>
 						<div class="infoResponse"> ${response.project.name} </div>  
 					</div>	
@@ -174,15 +181,17 @@ $(document).on("ready", function(){
 					<div class="info-content">
 						<div class="infoFieldLabel BoldText"> Project Status: </div>
 						<div class="infoResponse"> 
-							<select id="project-status-dropdown" class="form-control" style="width:60%;">
+							<select id="project-status-dropdown" class="form-control" style="width:60%; height:25px;">
 								<option> In Design </option>
 								<option> Pending Design Approval </option>
 								<option> Return to Design </option>
 								<option> Approved </option>
 								<option> Cancel </option>
-							<select> Save	
+							<select> <p class="save-status"> Save</p>	
 						 </div>  
 					</div>
+
+					
 					`;
 		$projectInfo.append(html);
 	 }

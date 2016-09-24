@@ -49,7 +49,7 @@
 
 
  .bar {
- 	z-index: 11;
+ 	z-index: 30;
  	mix-blend-mode: multiply;
  	position: absolute;
  	margin-top: -10px;
