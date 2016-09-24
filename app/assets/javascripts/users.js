@@ -189,11 +189,15 @@ $(document).on("ready", function(){
 								<option> Cancel </option>
 							<select> <p class="save-status"> Save</p>	
 						 </div>  
-					</div>
-
-					
+					</div>					
 					`;
 		$projectInfo.append(html);
 	 }
+// get all thumbnails and render form
+// post on submit on the form
+// get request to get last thumbnail created thumbnail.last
+// append thumbnail gallery to put las thumbnail created
+
+
 
 });	
