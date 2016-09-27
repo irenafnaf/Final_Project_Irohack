@@ -131,8 +131,8 @@ $(document).on("ready", function(){
 		var projectName = $(event.currentTarget).data("project-name");
 		var projectId = $(event.currentTarget).data("project-id");
 		var clientId = $("#projects-slider").data("client");
-		console.log(projectName)
-		console.log(projectId)
+		// console.log(projectName)
+		// console.log(projectId)
 		$.ajax({
 			type: "GET",
 			url: `http://localhost:3000/api/clients/${clientId}/projects/${projectId}`,
@@ -146,7 +146,7 @@ $(document).on("ready", function(){
 	});
 
 	function showProjectInfo(response){
-		console.log(response);
+		// console.log(response);
 		var $projectInfo = $(".project-info");
 		$projectInfo.empty();
 		var types = response.types
@@ -193,6 +193,57 @@ $(document).on("ready", function(){
 					`;
 		$projectInfo.append(html);
 	 }
+
+	 $(".clients-projects").on("click", ".js-one-project", function(event){
+		var projectName = $(event.currentTarget).data("project-name");
+		var projectId = $(event.currentTarget).data("project-id");
+		var clientId = $("#projects-slider").data("client");
+		console.log(projectName)
+		console.log(projectId)
+		$.ajax({
+			type: "GET",
+			url: `http://localhost:3000/api/projects/${projectId}/thumbnails`,
+			success: function(response){
+				
+				showImageUploadForm();
+			},
+			error: function(error){
+				console.log(error);
+			}
+		});
+	});
+
+	function showImageUploadForm(response){
+		var $projectImages = $(".imagesDiv");
+		$projectImages.empty();
+
+		var html = `
+				<form class="new_thumbnail" id="new_thumbnail" enctype="multipart/form-data" 
+				action="/api/projects/1/thumbnails" accept-charset="UTF-8" method="post">
+				<input name="utf8" type="hidden" value="✓">
+				<input type="hidden" name="authenticity_token" 
+				value="nuLUFskWsE5VpxRsofr97K9dd3QfmU+bFhJfzbXsp9IsNKHOAibKT9IIBWiHPHryX0p8SUiZoPzOM2CHzv+84Q==">
+  
+				  <div class="field">
+				    <label for="thumbnail_name">Name</label>
+				    <input type="text" name="thumbnail[name]" id="thumbnail_name">
+				  </div>
+
+				  <div class="field">
+				    <input type="file" name="thumbnail[image]" id="thumbnail_image">
+				  </div>
+				  <div class="actions">
+				    <input type="submit" name="commit" value="Upload Proof" data-disable-with="Create Thumbnail">
+				  </div>
+				</form>
+
+				`;
+				$projectImages.append(html)
+	} 
+
+	function showThumbnailGallery(response){
+
+	}
 // get all thumbnails and render form
 // post on submit on the form
 // get request to get last thumbnail created thumbnail.last

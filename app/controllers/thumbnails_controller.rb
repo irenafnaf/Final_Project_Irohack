@@ -1,4 +1,9 @@
 class ThumbnailsController < ApplicationController
+	def index
+
+		thumbnail = Thumbnail.all
+		render json: thumbnail
+	end
 
 	def new
 		@project = Project.find_by(id: params[:project_id])
