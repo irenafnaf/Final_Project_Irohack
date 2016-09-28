@@ -52,7 +52,7 @@ $(document).on("ready", function(){
 		});
 
 		var emptycounter = 0
-		$("js-required").each(function(index, ele){
+		$(".js-required").each(function(index, ele){
 			if ($(ele).val() === "") {
 					emptycounter++
 			};
@@ -114,7 +114,7 @@ $(document).on("ready", function(){
 
 	function showProjects(response){
 
-		console.log(response);
+		// console.log(response);
 
 		var $projectList = $(".clients-projects");
 		$projectList.empty();
@@ -142,8 +142,8 @@ $(document).on("ready", function(){
 		var projectName = $(event.currentTarget).data("project-name");
 		var projectId = $(event.currentTarget).data("project-id");
 		var clientId = $("#projects-slider").data("client");
-		console.log(projectName)
-		console.log(projectId)
+		// console.log(projectName)
+		// console.log(projectId)
 		$.ajax({
 			type: "GET",
 			url: `http://localhost:3000/api/clients/${clientId}/projects/${projectId}`,
@@ -157,7 +157,7 @@ $(document).on("ready", function(){
 	});
 
 	function showProjectInfo(response){
-		console.log(response);
+		// console.log(response);
 		var $projectInfo = $(".project-info");
 		$projectInfo.empty();
 		var types = response.types

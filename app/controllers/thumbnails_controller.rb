@@ -14,7 +14,7 @@ class ThumbnailsController < ApplicationController
 	def create
 		project = Project.find_by(id: params[:project_id])
 		thumbnail = project.thumbnails.create!(thumbnail_params)
-		render json: thumbnail
+		render json: thumbnail, status: 200
 	end
 
 	def update
@@ -42,6 +42,6 @@ class ThumbnailsController < ApplicationController
 		private
 
 	def thumbnail_params
-		params.require(:thumbnail).permit(:name, :description, :image, :project_id)
+		params.require(:thumbnail).permit(:name, :image, :project_id)
 	end
 end

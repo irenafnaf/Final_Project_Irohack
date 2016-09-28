@@ -82,7 +82,7 @@ $(document).on("ready", function(){
 		// console.log(clientId)
 		$.ajax({
 			type: "get",
-			url: `http://localhost:3000/api/clients/${clientId}/projects`,
+			url: `/api/clients/${clientId}/projects`,
 			success: function(response){
 				showProjects(response, clientName);
 			},
@@ -135,7 +135,7 @@ $(document).on("ready", function(){
 		// console.log(projectId)
 		$.ajax({
 			type: "GET",
-			url: `http://localhost:3000/api/clients/${clientId}/projects/${projectId}`,
+			url: `/api/clients/${clientId}/projects/${projectId}`,
 			success: function(response){
 				showProjectInfo(response);
 			},
@@ -198,14 +198,15 @@ $(document).on("ready", function(){
 		var projectName = $(event.currentTarget).data("project-name");
 		var projectId = $(event.currentTarget).data("project-id");
 		var clientId = $("#projects-slider").data("client");
-		console.log(projectName)
-		console.log(projectId)
+		// console.log(projectName)
+		// console.log(projectId)
 		$.ajax({
 			type: "GET",
-			url: `http://localhost:3000/api/projects/${projectId}/thumbnails`,
+			url: `/api/projects/${projectId}/thumbnails`,
 			success: function(response){
 				
 				showImageUploadForm();
+				// console.log(response);
 			},
 			error: function(error){
 				console.log(error);
@@ -215,7 +216,8 @@ $(document).on("ready", function(){
 
 	function showImageUploadForm(response){
 		var $projectImages = $(".imagesDiv");
-		$projectImages.empty();
+		// $projectImages.empty();
+		
 
 		var html = `
 				<form class="new_thumbnail" id="new_thumbnail" enctype="multipart/form-data" 
@@ -226,29 +228,50 @@ $(document).on("ready", function(){
   
 				  <div class="field">
 				    <label for="thumbnail_name">Name</label>
-				    <input type="text" name="thumbnail[name]" id="thumbnail_name">
+				    <input type="text" name="thumbnail[name]" id="thumbnail_name" class="js-required">
 				  </div>
 
 				  <div class="field">
-				    <input type="file" name="thumbnail[image]" id="thumbnail_image">
+				    <input type="file" name="thumbnail[image]" id="thumbnail_image" class="js-required">
 				  </div>
 				  <div class="actions">
-				    <input type="submit" name="commit" value="Upload Proof" data-disable-with="Create Thumbnail">
+				    <input type="submit" name="commit" value="Upload Proof" class="js-required" data-disable-with="Create Thumbnail">
 				  </div>
 				</form>
 
+				<div class="thumbnailGalleryDiv">
+				</div>
+
 				`;
-				$projectImages.append(html)
+				$projectImages.prepend(html)
+				$(".new_thumbnail").on("submit", function(e){
+					e.preventDefault()
+					$(document).trigger("ajax:success")
+				})
+
+		
 	} 
 
+	$(document).on("ajax:success", function(){
+		//ajax get request for all thumbails
+		console.log("Worked");
+	})
+	
+	
 	function showThumbnailGallery(response){
-
+		var $thumbnailGallery = $(".thumbnailGalleryDiv");
+		$thumbnailGallery.empty();
+		var gallery = response.forEach(function(singleResponse){
+						var url = singleResponse.image.url
+					
+						var html= `<img src="${url}" style="width:10%; height:10%"> `;
+						$thumbnailGallery.append(html);		  
+					});
 	}
 // get all thumbnails and render form
-// post on submit on the form
 // get request to get last thumbnail created thumbnail.last
 // append thumbnail gallery to put las thumbnail created
 
-
+//only most recent one with that name
 
 });	

@@ -16,3 +16,9 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+
+<%= form_for([@project, @upload], remote: true, multipart: true) do |f| %>
+      <%= f.file_field :image %>
+      <%= f.submit %>
+  <% end %>
