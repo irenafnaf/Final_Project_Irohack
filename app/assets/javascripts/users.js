@@ -204,8 +204,8 @@ $(document).on("ready", function(){
 			type: "GET",
 			url: `/api/projects/${projectId}/thumbnails`,
 			success: function(response){
-				
-				showImageUploadForm();
+				// console.log(projectId);
+				showImageUploadForm(projectId);
 				// console.log(response);
 			},
 			error: function(error){
@@ -214,14 +214,15 @@ $(document).on("ready", function(){
 		});
 	});
 
-	function showImageUploadForm(response){
+	function showImageUploadForm(projectId, response){
+		//console.log(projectId);
 		var $projectImages = $(".imagesDiv");
 		// $projectImages.empty();
 		
 
 		var html = `
-				<form class="new_thumbnail" id="new_thumbnail" enctype="multipart/form-data" 
-				action="/api/projects/1/thumbnails" accept-charset="UTF-8" method="post">
+				<form class="new_thumbnail" id="new_thumbnail" data-projectId="${projectId}" enctype="multipart/form-data" 
+				action="/api/projects/1/thumbnails" data-remote="true" accept-charset="UTF-8" method="post">
 				<input name="utf8" type="hidden" value="✓">
 				<input type="hidden" name="authenticity_token" 
 				value="nuLUFskWsE5VpxRsofr97K9dd3QfmU+bFhJfzbXsp9IsNKHOAibKT9IIBWiHPHryX0p8SUiZoPzOM2CHzv+84Q==">
@@ -244,18 +245,32 @@ $(document).on("ready", function(){
 
 				`;
 				$projectImages.prepend(html)
+				
 				$(".new_thumbnail").on("submit", function(e){
-					e.preventDefault()
-					$(document).trigger("ajax:success")
+					// e.preventDefault();
+					// $(document).trigger("ajax:success")
+					submitImageThumbnail(projectId);
 				})
 
 		
 	} 
 
-	$(document).on("ajax:success", function(){
-		//ajax get request for all thumbails
-		console.log("Worked");
-	})
+	function submitImageThumbnail(projectId){
+		// $(document).on("ajax:success", function(){
+		console.log(projectId);
+		
+			$.ajax({
+				type: "GET",
+				url: `/api/projects/${projectId}/thumbnails`,
+				success: showThumbnailGallery,
+					// console.log(response);,
+				error: function(error){
+					console.log(error);
+				}
+			});
+	}
+
+
 	
 	
 	function showThumbnailGallery(response){
