@@ -23,7 +23,7 @@ $(document).on("ready", function(){
 		var $dropDowns = $("#js-dropdowns");
 		var dropdownValue = $("#js-one-dropdown").last().data("dropdown") + 1
 		var selectHtml = `<select id="js-one-dropdown" data-dropdown="${dropdownValue}" 
-						class="js-required" style="width:60%;">`
+						class="js-required" style="width:60%;"></select>`
 		$dropDowns.append(selectHtml);				
 
 		response.forEach(function(type){

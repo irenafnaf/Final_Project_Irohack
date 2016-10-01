@@ -216,11 +216,37 @@ $(document).on("ready", function(){
 
 	function showImageUploadForm(projectId, response){
 		//console.log(projectId);
-		var $projectImages = $(".imagesDiv");
 		// $projectImages.empty();
+		$.ajax({
+			type: "GET",
+			url: `/api/projects/${projectId}/types`,
+			success: projectTypeNames,
+				// function (response){
+				// console.log(response);
+			
+			error: function(error){
+				console.log(error);
+			}
+		});
 		
+		function projectTypeNames(response){
+			var typeOptions = ""
+			
+			response.forEach(function(type){
+				var typeId = type.id
+				var typeName = type.name
+				var optionHtml = `<option id="project-type" value="${typeId}"">
+									${type.name}
+									</option>`;
 
-		var html = `
+			typeOptions += optionHtml.toString();
+
+			});
+		console.log(typeOptions);
+		
+			var $projectImages = $(".imagesDiv");
+
+			var html = `
 				<form class="new_thumbnail" id="new_thumbnail" data-projectId="${projectId}" enctype="multipart/form-data" 
 				action="/api/projects/1/thumbnails" data-remote="true" accept-charset="UTF-8" method="post">
 				<input name="utf8" type="hidden" value="✓">
@@ -229,7 +255,9 @@ $(document).on("ready", function(){
   
 				  <div class="field">
 				    <label for="thumbnail_name">Name</label>
-				    <input type="text" name="thumbnail[name]" id="thumbnail_name" class="js-required">
+				    <select name="thumbnail[name]" id="thumbnail_name" class="js-required" style="width:60%;">
+				    ${typeOptions}
+				    </select>
 				  </div>
 
 				  <div class="field">
@@ -245,6 +273,8 @@ $(document).on("ready", function(){
 
 				`;
 				$projectImages.prepend(html)
+
+		}
 				
 				$(".new_thumbnail").on("submit", function(e){
 					// e.preventDefault();
@@ -254,6 +284,8 @@ $(document).on("ready", function(){
 
 		
 	} 
+
+	
 
 	function submitImageThumbnail(projectId){
 		// $(document).on("ajax:success", function(){
@@ -273,17 +305,20 @@ $(document).on("ready", function(){
 
 	
 	
-	function showThumbnailGallery(response){
+	function showThumbnailGallery(projectId, response){
+		console.log(projectId);
+
+		
 		var $thumbnailGallery = $(".thumbnailGalleryDiv");
 		$thumbnailGallery.empty();
 		var gallery = response.forEach(function(singleResponse){
 						var url = singleResponse.image.url
 					
+
 						var html= `<img src="${url}" style="width:10%; height:10%"> `;
 						$thumbnailGallery.append(html);		  
 					});
 	}
-// get all thumbnails and render form
 // get request to get last thumbnail created thumbnail.last
 // append thumbnail gallery to put las thumbnail created
 

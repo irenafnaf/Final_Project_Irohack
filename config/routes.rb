@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   end
 
   get '/api/types' => "types#index"
+  get '/api/projects/:project_id/types' => "project_types#index"
 
 
   
