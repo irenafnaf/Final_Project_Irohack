@@ -1,8 +1,23 @@
 class ThumbnailsController < ApplicationController
 	def index
+		project = Project.find_by(id: params[:project_id])
+		project_types = project.types.each do |type|
+							type.name
+						end
 
-		thumbnail = Thumbnail.all
-		render json: thumbnail
+		
+		# byebug
+		lastThumbnail = Thumbnail.order(created_at: :desc).where(:name => project_types)
+		group_by_name = lastThumbnail.group_by{ |d| d[:name] }
+		test = [] 
+		displayed_thumbnails = group_by_name.each do |group_key, group_value|
+									test.push(group_value[0])
+
+								end
+		# give me the most recent one out of each
+		render json: test
+		# render json: displayed_thumbnails
+
 	end
 
 	def new

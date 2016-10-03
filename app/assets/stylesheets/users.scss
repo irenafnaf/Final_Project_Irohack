@@ -156,6 +156,7 @@
 
  .project-info{
     height: 35%;
+	overflow-y: scroll;
     border-radius: 25px;
     z-index: 220;
  	background-color: white;
@@ -164,20 +165,21 @@
     margin-left: 3%;
     margin-top: 11%;
     float: left;
+    color: #666667;
+	display: block;
+
  }
 
- .project-info {
-	display: block;
+.container-space{
+	height: 5%;
 }
 
-.container-space{
-	height: 10%;
-}
 .info-content {
     position: relative;
     clear: both;
     margin: 2px 10px 0px 10px;
     min-width: 94%;
+    color: #666667;
 }
 
 .infoFieldLabel {
@@ -187,20 +189,30 @@
     padding: 0px 0px 0px 0px;
     text-align: right;
     vertical-align: middle;
+    color: #666667;
+}
+
+.infoTitle{
+	font-size: 20px;
+    margin-left: 40%;
+    color: #666667;
 }
 
 .BoldText {
 	font-weight: bold !important;
+	color: #666667;
 }
 
 .infoResponse {
 	margin-left: 150px;
+	color: #666667;
 }
 
 .save-status:hover {
 	cursor: pointer;
     color: #3b4ba0;
     text-decoration:underline;
+    display: inline;
 }
 
 .imagesDiv {
@@ -211,6 +223,51 @@
     float: right;
     margin-top: 11%;
     margin-right: 4%
+}
+
+.infoThumbnail {
+	margin-left: 28%;
+	color: #666667;
+}
+
+.btn-default{
+	width: 80%;
+	margin-left: 9%;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+  
+    outline: none;
+    background: white;
+
+}
+.upload-submit {
+	width: 76%;
+	 border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border: none;
+	margin-left: 11%;
+}
+
+.thumbnailGalleryDiv{
+	padding: 3%;
+    text-align: center;
+}
+
+.commentsDiv{
+	background: white;
+    width: 93%;
+    height: 34%;
+    display: inline-block;
+    margin-top: 15px;
+    margin-left: 3%;
+    border-bottom-right-radius: 90px;
+    border-bottom-left-radius: 90px;
 }
 
  .bottom-nav-bar {

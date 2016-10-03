@@ -6,7 +6,6 @@ $(document).on("ready", function(){
 		this.src="/assets/clients_button.png"
 		});
 
-
 	// $("#welcome").animate({
 	// 							opacity: 0});
 	// });
@@ -29,9 +28,6 @@ $(document).on("ready", function(){
 	});
 
 
-
-
-
 	function getClients(){
 		$.ajax({
 			type: "GET",
@@ -42,8 +38,6 @@ $(document).on("ready", function(){
 			},
 			error: handleError
 		});
-
-
 	}
 
 	function handleError(error){
@@ -68,8 +62,6 @@ $(document).on("ready", function(){
 
 			$clientList.append(html);
 		});
-
-
 	};
 
 
@@ -88,11 +80,7 @@ $(document).on("ready", function(){
 			},
 			error: projectsError,
 		});
-
-
-
 	});
-
 
 	function showProjects(response, clientName){
 
@@ -120,8 +108,6 @@ $(document).on("ready", function(){
 		console.log("Error!");
 		// console.log(error.responseText);
 	}
-
-	
 
 	$(".clients-projects").on("click", ".js-one-project", function(){
 		document.getElementById('project-main-display-slider').classList.toggle('closed');
@@ -162,6 +148,7 @@ $(document).on("ready", function(){
 				}
 			});
 		var html = `<div class="container-space"></div>
+						<div class="infoTitle BoldText" style="font-size:20px;"> Project Info </div>
 					<div class="info-content">
 						<div class="infoFieldLabel BoldText"> Project Name: </div>
 						<div class="infoResponse"> ${response.project.name} </div>  
@@ -206,6 +193,7 @@ $(document).on("ready", function(){
 			success: function(response){
 				// console.log(projectId);
 				showImageUploadForm(projectId);
+				showThumbnailGallery(projectId, response);	
 				// console.log(response);
 			},
 			error: function(error){
@@ -213,6 +201,25 @@ $(document).on("ready", function(){
 			}
 		});
 	});
+
+	function showThumbnailGallery(projectId, response){
+		// console.log(response);
+
+		
+		var $thumbnailGallery = $(".thumbnailGalleryDiv");
+		$thumbnailGallery.empty();
+		var gallery = response.forEach(function(singleResponse){
+						var url = singleResponse.image.url
+						// console.log(url);
+						var idForImg = singleResponse.name
+						// console.log(idForImg)
+
+
+						var html= `<img src="${url}" class="project-thumbnail" data-thumnbnail-id="${idForImg}" 
+									style="width:15%; height:10%"> `;
+						$thumbnailGallery.append(html);		  
+					});
+	}
 
 	function showImageUploadForm(projectId, response){
 		//console.log(projectId);
@@ -235,90 +242,116 @@ $(document).on("ready", function(){
 			response.forEach(function(type){
 				var typeId = type.id
 				var typeName = type.name
-				var optionHtml = `<option id="project-type" value="${typeId}"">
-									${type.name}
+				var optionHtml = `<option id="project-type${typeId}" value="${type.id}">
+									${typeName}
 									</option>`;
 
 			typeOptions += optionHtml.toString();
 
 			});
-		console.log(typeOptions);
+		
 		
 			var $projectImages = $(".imagesDiv");
 
 			var html = `
+				<div class="container-space"></div>
+				<div class="infoTitle BoldText" style="font-size:20px;"> Images </div>
+				
 				<form class="new_thumbnail" id="new_thumbnail" data-projectId="${projectId}" enctype="multipart/form-data" 
 				action="/api/projects/1/thumbnails" data-remote="true" accept-charset="UTF-8" method="post">
 				<input name="utf8" type="hidden" value="✓">
 				<input type="hidden" name="authenticity_token" 
 				value="nuLUFskWsE5VpxRsofr97K9dd3QfmU+bFhJfzbXsp9IsNKHOAibKT9IIBWiHPHryX0p8SUiZoPzOM2CHzv+84Q==">
-  
-				  <div class="field">
-				    <label for="thumbnail_name">Name</label>
-				    <select name="thumbnail[name]" id="thumbnail_name" class="js-required" style="width:60%;">
-				    ${typeOptions}
-				    </select>
-				  </div>
-
-				  <div class="field">
+  				<div class="info-content">
+						<div class="infoFieldLabel BoldText"> Name: </div>
+						<div class="infoThumbnail"> 
+							<select name="thumbnail[name]" id="thumbnail_name" class="form-control js-required" style="width:85%; height:25px;">
+				    			${typeOptions}
+				    			</select>
+						 </div>  
+					</div>					
+				
+				<div class="info-content">
+				  <div class="field btn btn-default btn-file"">
 				    <input type="file" name="thumbnail[image]" id="thumbnail_image" class="js-required">
 				  </div>
+				</div>
+				
 				  <div class="actions">
-				    <input type="submit" name="commit" value="Upload Proof" class="js-required" data-disable-with="Create Thumbnail">
+				    <input type="submit" name="commit" value="Upload Proof" class="js-required upload-submit" data-disable-with="Upload Proof">
 				  </div>
 				</form>
-
-				<div class="thumbnailGalleryDiv">
-				</div>
-
 				`;
 				$projectImages.prepend(html)
 
 		}
+	
+		$(".imagesDiv").on("submit", ".new_thumbnail", function(e){
+		// alert("Submitted!")
+		// e.preventDefault();
+		// console.log("hello");
+		// 			// $(document).trigger("ajax:success")
+			 $('#thumbnail-image').change(function() { 
+			 	submitImageThumbnail(this);
+			 });
+		})
 				
-				$(".new_thumbnail").on("submit", function(e){
-					// e.preventDefault();
-					// $(document).trigger("ajax:success")
-					submitImageThumbnail(projectId);
-				})
 
 		
 	} 
 
 	
-
-	function submitImageThumbnail(projectId){
+	function submitImageThumbnail(input){
 		// $(document).on("ajax:success", function(){
-		console.log(projectId);
-		
-			$.ajax({
-				type: "GET",
-				url: `/api/projects/${projectId}/thumbnails`,
-				success: showThumbnailGallery,
-					// console.log(response);,
-				error: function(error){
-					console.log(error);
-				}
-			});
+		// console.log(projectId);
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+
+
+			reader.onload = function (e) {
+				$('.project-thumbnail').attr('src', e.target.result);
+				console.log(e.target.result);
+			}
+
+			reader.readAsDataURL(input.files[0]);
+		}
 	}
-
-
-	
-	
-	function showThumbnailGallery(projectId, response){
-		console.log(projectId);
-
 		
-		var $thumbnailGallery = $(".thumbnailGalleryDiv");
-		$thumbnailGallery.empty();
-		var gallery = response.forEach(function(singleResponse){
-						var url = singleResponse.image.url
+		
+			// $.ajax({
+			// 	type: "GET",
+			// 	url: `/api/projects/${projectId}/thumbnails`,
+			// 	success: mostRecentThumbnail,
+				
+			// 	error: function(error){
+			// 		console.log(error);
+			// 	}
+			// });
+	
+
+	function mostRecentThumbnail(response){
+		// var $thumbnailGallery = $(".thumbnailGalleryDiv");
+		// $thumbnailGallery.empty();
+		// var gallery = response.forEach(function(singleResponse){
+						
+		// 				var newUrl = singleResponse.image.url
+		// 				var idToAdd = singleResponse.name						
+
+
+		// 				var new_image= `<img src="${newUrl}" id="${idToAdd}" style="width:10%; height:10%"> `;
+		// 				$thumbnailGallery.append(new_image);		  
+							
+		// 				});
 					
-
-						var html= `<img src="${url}" style="width:10%; height:10%"> `;
-						$thumbnailGallery.append(html);		  
-					});
+					
 	}
+
+
+	
+
+	// function recentThumbnailGallery(response) {
+	// 	console.log(response);
+	// }
 // get request to get last thumbnail created thumbnail.last
 // append thumbnail gallery to put las thumbnail created
 
