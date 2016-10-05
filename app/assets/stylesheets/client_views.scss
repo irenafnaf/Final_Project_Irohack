@@ -14,8 +14,6 @@
  }
 
 
-
-
  .slider {
  	z-index: 10;
  	display: inline-block;
@@ -25,16 +23,19 @@
 
  }
 
-
-
-
 .newproject-form {
 	z-index: 9;
 	position: relative;
 	width: 50%;
 	margin: 0 auto;
-	margin-top: -15px;
+	margin-top: -2%;
+	background: white;
+    border-radius: 25px;
+    text-align: center;
 	
+}
+.form-control {
+	height: 25px;
 }
 
 .add-type {
@@ -42,6 +43,8 @@
 }
 .headline {
 	color: #666667;
+	font-size: 30px;
+	font-weight: bolder;
 }
 
 #js-name {
@@ -49,8 +52,8 @@
 	 border-radius: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
-    border: none;
-	padding: 10px;
+    border: 0 1px;
+	padding: 5px;
 	margin-bottom: 10px;
 }
 
@@ -60,8 +63,8 @@
 	 border-radius: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
-    border: none;
-	padding: 10px;
+    border: 0 1px;
+	padding: 5px;
 	margin-bottom: 10px;
 
 }
@@ -71,8 +74,8 @@
 	 border-radius: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
-    border: none;
-	padding: 10px;
+    border: 0 1px;
+	padding: 5px;
 	margin-bottom: 10px;
 }
 
@@ -82,12 +85,13 @@
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border: none;
-	padding: 10px;
+	padding: 5px;
 }
 
 
 #js-one-dropdown {
 	display: block;
+	margin: 0 auto;
 }
 
  .new-project-slider {
@@ -108,7 +112,7 @@
  	z-index: 100;
  	display: inline-block;
  	position: absolute;
- 	background-image: url("/assets/projects_slideout.png");
+ 	background-image: url("/assets/client_projects_slideout.png");
  	width: 563px;
  	height: 452px;
  	top: 211px;
@@ -120,6 +124,17 @@
 	transition-property: all;
 	transition-duration: .6s;
 	transition-timing-function: ease-out;
+ }
+
+  .project-whiteDiv{
+ 	width: 80%;
+    background-color: white;
+    height: 64%;
+    margin-left: 10%;
+    margin-top: 20%;
+	border-radius: 25px;
+    border-color: grey;
+    overflow-y: scroll;
  }
 
  .clients-projects {
@@ -135,27 +150,54 @@
      text-decoration:underline;
 }
 
-.project-main-display-slider {
-	z-index: 10;
+.client-project-main-display-slider.closed {
+	max-height: 0;
+}
+
+.client-project-main-display-slider {
+	z-index: 15;
  	position: absolute;
- 	// background-image: url("/assets/display_board.png");
+ 	background-image: url("/assets/client_display_board.png");
  	display: block;
 	width: 968px;
-    height: 535px;
-    // margin-left: 17%;
-    // margin-right: auto;
-    // margin-bottom: 25px;
-    // margin-top: -456px;
+	height: 535px;
+    margin-left: 17%;
+    margin-right: auto;
+    margin-bottom: 25px;
+    margin-top: -33.3%;
+    overflow-y: hidden;
+	max-height: 535px; /* approximate max height */
+
+	transition-property: all;
+	transition-duration: .6s;
+	transition-timing-function: ease-out;
 }
 
 .project-info {
+	 height: 35%;
+	overflow-y: scroll;
+    border-radius: 25px;
+    z-index: 220;
+ 	background-color: white;
+    position: relative;
+    width: 58%;
+    margin-left: 3%;
+    margin-top: 11%;
+    float: left;
+    color: #666667;
 	display: block;
 }
+
+.container-space{
+	height: 5%;
+}
+
 .info-content {
     position: relative;
     clear: both;
     margin: 2px 10px 0px 10px;
     min-width: 94%;
+    color: #666667;
 }
 
 .infoFieldLabel {
@@ -165,13 +207,36 @@
     padding: 0px 0px 0px 0px;
     text-align: right;
     vertical-align: middle;
+    color: #666667;
+}
+
+.infoTitle{
+	font-size: 20px;
+    margin-left: 40%;
+    color: #666667;
 }
 
 .BoldText {
 	font-weight: bold !important;
+	color: #666667;
 }
 
 .infoResponse {
-	margin-left: 200px;
+	margin-left: 150px;
+	color: #666667;
 }
+
+.save-status:hover {
+	cursor: pointer;
+    color: #3b4ba0;
+    text-decoration:underline;
+    display: inline;
+}
+
+ .bottom-nav-bar {
+ 	position: relative;
+    float: right;
+    bottom: -371px;
+    z-index: 100;
+ }
 

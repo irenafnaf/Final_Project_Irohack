@@ -23,7 +23,7 @@ $(document).on("ready", function(){
 		var $dropDowns = $("#js-dropdowns");
 		var dropdownValue = $("#js-one-dropdown").last().data("dropdown") + 1
 		var selectHtml = `<select id="js-one-dropdown" data-dropdown="${dropdownValue}" 
-						class="js-required" style="width:60%;"></select>`
+						class="js-required form-control" style="width:60%; font-family:'Caviar Dreams';"></select>`
 		$dropDowns.append(selectHtml);				
 
 		response.forEach(function(type){
@@ -41,6 +41,7 @@ $(document).on("ready", function(){
 		getTypes();
 
 	})	
+
 
 	$("#js-newproject-form").on("submit", function(event){
 		event.preventDefault();
@@ -83,14 +84,14 @@ $(document).on("ready", function(){
 	
 	});
 
-	$("#js-projects-button").mouseover(function(){
-		this.src="/assets/projects_button_mouseover.png"
+	$("#js-client-projects-button").mouseover(function(){
+		this.src="/assets/client_projects_button_mouseover.png"
 		}).mouseout(function(){
-		this.src="/assets/projects_button.png"
+		this.src="/assets/client_projects_button.png"
 	});
 
 
-	$("#js-projects-button").mouseover(function(){
+	$("#js-client-projects-button").mouseover(function(){
 
 		var clientId = $("#projects-slider").data("client")
 		
@@ -99,7 +100,6 @@ $(document).on("ready", function(){
 			url: `http://localhost:3000/api/clients/${clientId}/projects`,
 			success: function(response){
 				showProjects(response);
-				
 			},
 			error: 
 					function(error){
@@ -113,9 +113,7 @@ $(document).on("ready", function(){
 
 
 	function showProjects(response){
-
 		// console.log(response);
-
 		var $projectList = $(".clients-projects");
 		$projectList.empty();
 		response.forEach(function(project){
@@ -129,8 +127,6 @@ $(document).on("ready", function(){
 
 			$projectList.append(html);
 		});
-
-
 	}
 
 	function projectsError(error){

@@ -15,16 +15,19 @@ $(document).on("ready", function(){
 	});
 
 	$("#js-getclients").mouseover(function(){
-
 		getClients();
 	}); 
 
 	$("#js-clients").on("click", ".js-one-client", function(){
-		document.getElementById('slider').classList.toggle('closed');
+		document.getElementById('slider').classList.remove('closed');
 	});
 
 	$("#js-clients").on("click", ".js-one-client", function(){
 		document.getElementById('projects-slider').classList.toggle('closed');
+	});
+
+	$("#js-projects-close").on("click", function(){
+		document.getElementById('projects-slider').classList.toggle2('closed');
 	});
 
 
@@ -52,12 +55,9 @@ $(document).on("ready", function(){
 		response.forEach(function(theClient){
 			// console.log(theClient.id)
 			var html = `
-						
-							<li  class= "js-one-client" data-client-name=${theClient.name} data-client-id=${theClient.id}>
-								<p> ${theClient.name} </p>
-							</li>
-							
-						
+						<li  class= "js-one-client" data-client-name=${theClient.name} data-client-id=${theClient.id}>
+							<p> ${theClient.name} </p>
+						</li>	
 						`;
 
 			$clientList.append(html);
@@ -83,11 +83,11 @@ $(document).on("ready", function(){
 	});
 
 	function showProjects(response, clientName){
-
 		// console.log(response);
-
 		var $projectList = $(".clients-projects");
 		$projectList.empty();
+		var $projectWhiteDiv = $(".project-whiteDiv");
+		var closeButton = `<img src="/assets/close_button.png" id="js-projects-close">`;
 
 		response.forEach(function(project){
 
@@ -100,8 +100,8 @@ $(document).on("ready", function(){
 
 			$projectList.append(html);
 		});
-
-
+			
+			$projectWhiteDiv.append(closeButton);
 	}
 
 	function projectsError(error){
@@ -109,7 +109,13 @@ $(document).on("ready", function(){
 		// console.log(error.responseText);
 	}
 
+
+
 	$(".clients-projects").on("click", ".js-one-project", function(){
+		document.getElementById('project-main-display-slider').classList.toggle('closed');
+	});
+
+	$("#js-project-main-close").on("click", function(){
 		document.getElementById('project-main-display-slider').classList.toggle('closed');
 	});
 
@@ -135,6 +141,10 @@ $(document).on("ready", function(){
 		// console.log(response);
 		var $projectInfo = $(".project-info");
 		$projectInfo.empty();
+
+		var $projectMainDisplay = $("#project-main-display-slider");
+		var projectsCloseButton = `<img src="/assets/close_button.png" id="js-project-main-close">`;
+
 		var types = response.types
 		// console.log(types)
 		var all_types = "";
@@ -179,6 +189,7 @@ $(document).on("ready", function(){
 					</div>					
 					`;
 		$projectInfo.append(html);
+		$projectMainDisplay.append(projectsCloseButton);
 	 }
 
 	 $(".clients-projects").on("click", ".js-one-project", function(event){
@@ -205,9 +216,9 @@ $(document).on("ready", function(){
 	function showThumbnailGallery(projectId, response){
 		// console.log(response);
 
-		
 		var $thumbnailGallery = $(".thumbnailGalleryDiv");
 		$thumbnailGallery.empty();
+
 		var gallery = response.forEach(function(singleResponse){
 						var url = singleResponse.image.url
 						// console.log(url);
@@ -215,10 +226,13 @@ $(document).on("ready", function(){
 						// console.log(idForImg)
 
 
-						var html= `<img src="${url}" class="project-thumbnail" data-thumnbnail-id="${idForImg}" 
+						var html= `<img src="${url}" id="imageresource" class="project-thumbnail" data-thumnbnail-id="${idForImg}" 
 									style="width:15%; height:10%"> `;
 						$thumbnailGallery.append(html);		  
 					});
+		// console.log(response);
+		
+
 	}
 
 	function showImageUploadForm(projectId, response){
@@ -236,7 +250,7 @@ $(document).on("ready", function(){
 			}
 		});
 		
-		function projectTypeNames(response){
+		function projectTypeNames(response, projectId){
 			var typeOptions = ""
 			
 			response.forEach(function(type){
@@ -249,7 +263,6 @@ $(document).on("ready", function(){
 			typeOptions += optionHtml.toString();
 
 			});
-		
 		
 			var $projectImages = $(".imagesDiv");
 
@@ -282,7 +295,7 @@ $(document).on("ready", function(){
 				  </div>
 				</form>
 				`;
-				$projectImages.prepend(html)
+				$projectImages.prepend(html);
 
 		}
 	
@@ -291,63 +304,50 @@ $(document).on("ready", function(){
 		// e.preventDefault();
 		// console.log("hello");
 		// 			// $(document).trigger("ajax:success")
-			 $('#thumbnail-image').change(function() { 
-			 	submitImageThumbnail(this);
-			 });
+			setTimeout(function(){
+				submitImageThumbnail(projectId)
+			}, 1000)
 		})
 				
-
-		
 	} 
 
 	
-	function submitImageThumbnail(input){
+	function submitImageThumbnail(projectId){
 		// $(document).on("ajax:success", function(){
-		// console.log(projectId);
-		if (input.files && input.files[0]) {
-			var reader = new FileReader();
-
-
-			reader.onload = function (e) {
-				$('.project-thumbnail').attr('src', e.target.result);
-				console.log(e.target.result);
-			}
-
-			reader.readAsDataURL(input.files[0]);
-		}
-	}
-		
-		
-			// $.ajax({
-			// 	type: "GET",
-			// 	url: `/api/projects/${projectId}/thumbnails`,
-			// 	success: mostRecentThumbnail,
-				
-			// 	error: function(error){
-			// 		console.log(error);
-			// 	}
-			// });
+		console.log(projectId);
 	
+				$.ajax({
+				type: "GET",
+				url: `/api/projects/${projectId}/thumbnails`,
+				success: mostRecentThumbnail,
+				
+				error: function(error){
+					console.log(error);
+				}
+			});
+	
+	}
 
 	function mostRecentThumbnail(response){
-		// var $thumbnailGallery = $(".thumbnailGalleryDiv");
-		// $thumbnailGallery.empty();
-		// var gallery = response.forEach(function(singleResponse){
+		console.log(response)
+		var $thumbnailGallery = $(".thumbnailGalleryDiv");
+		$thumbnailGallery.empty();
+		var gallery = response.forEach(function(singleResponse){
 						
-		// 				var newUrl = singleResponse.image.url
-		// 				var idToAdd = singleResponse.name						
+						var newUrl = singleResponse.image.url
+						var idToAdd = singleResponse.name						
 
 
-		// 				var new_image= `<img src="${newUrl}" id="${idToAdd}" style="width:10%; height:10%"> `;
-		// 				$thumbnailGallery.append(new_image);		  
+						var new_image= `<img src="${newUrl}" id="${idToAdd}" style="width:10%; height:10%"> `;
+						$thumbnailGallery.append(new_image);		  
 							
-		// 				});
+						});
 					
 					
 	}
 
 
-	
+
 
 	// function recentThumbnailGallery(response) {
 	// 	console.log(response);

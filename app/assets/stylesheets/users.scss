@@ -12,14 +12,17 @@
 
  .buttons-bar{
     z-index: 20;
-    display: block;
-    margin-left: 25%;
-    margin-right: auto;
-    margin-bottom: 25px;
-    width: 50%;
+    display: inline-block;
+    width: 100%;
     position: relative;
     margin-top: -11px;
  }
+
+ #new-project-slider {
+ 	display: inline-block;
+ }
+
+
 
  .project-whiteDiv{
  	width: 80%;
@@ -30,6 +33,14 @@
 	border-radius: 25px;
     border-color: grey;
     overflow-y: scroll;
+ }
+
+ #js-projects-close {
+ 	position: absolute;
+    float: left;
+    top: 28%;
+    left: 82%;
+    opacity: 0.5;
  }
 
  .clients-text {
@@ -98,7 +109,7 @@
  	z-index: 15;
  	display: inline-block;
  	position: absolute;
- 	background-image: url("/assets/projects_slideout.png");
+ 	background-image: url("/assets/user_projects_slideout.png");
  	width: 563px;
  	height: 452px;
  	top: 211px;
@@ -124,12 +135,21 @@
  }
 
  .clients-projects {
+ 	width: 60%;
  	margin-top: 5%;
  	color: #666667;
  	position: absolute;
  	height: 100%;
  	overflow: scroll;
  	position:relative;
+ }
+
+ #js-project-main-close {
+ 	position: absolute;
+    top: 22%;
+    right: 40%;
+    z-index: 250;
+    opacity: 0.5;
  }
  
  .project-main-display-slider.closed {
@@ -139,9 +159,10 @@
  .project-main-display-slider {
 	z-index: 15;
  	position: absolute;
- 	background-image: url("/assets/display_board.png");
+ 	background-image: url("/assets/user_display_board.png");
  	display: block;
 	width: 968px;
+	height: 535px;
     margin-left: 17%;
     margin-right: auto;
     margin-bottom: 25px;
