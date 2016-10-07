@@ -134,6 +134,10 @@ $(document).on("ready", function(){
 		// console.log(error.responseText);
 	}
 
+	$(".clients-projects").on("click", ".js-one-project", function(){
+		document.getElementById('client-project-main-display-slider').classList.toggle('closed');
+	});
+
 	$(".clients-projects").on("click", ".js-one-project", function(event){
 		var projectName = $(event.currentTarget).data("project-name");
 		var projectId = $(event.currentTarget).data("project-id");
@@ -168,7 +172,9 @@ $(document).on("ready", function(){
 					all_types += (type.name + ", ")
 				}
 			});
-		var html = `<div class="info-content">
+		var html = `<div class="container-space"></div>
+						<div class="infoTitle BoldText" style="font-size:20px;"> Project Info </div>
+					<div class="info-content">
 						<div class="infoFieldLabel BoldText"> Project Name: </div>
 						<div class="infoResponse"> ${response.project.name} </div>  
 					</div>	
@@ -193,12 +199,14 @@ $(document).on("ready", function(){
 								<option> Return to Design </option>
 								<option> Approved </option>
 								<option> Cancel </option>
-							<select> Save	
+							<select> <p class="save-status"> Save</p>	
 						 </div>  
 					</div>
 					`;
 		$projectInfo.append(html);
-	 }
+	}
+
+
 
 	
 

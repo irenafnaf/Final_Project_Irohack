@@ -134,7 +134,7 @@
 
  }
 
- .clients-projects {
+ .user-clients-projects {
  	width: 60%;
  	margin-top: 5%;
  	color: #666667;
@@ -143,6 +143,12 @@
  	overflow: scroll;
  	position:relative;
  }
+
+  .js-user-one-project:hover {
+	 cursor: pointer;
+     color: #3b4ba0;
+     text-decoration:underline;
+}
 
  #js-project-main-close {
  	position: absolute;
@@ -192,7 +198,7 @@
  }
 
 .container-space{
-	height: 5%;
+	height: 2%;
 }
 
 .info-content {
@@ -276,8 +282,21 @@
 }
 
 .thumbnailGalleryDiv{
-	padding: 3%;
+	padding: 1%;
     text-align: center;
+}
+
+.modal-footer {
+    padding: 15px;
+    text-align: center;
+    border-top: 1px solid #e5e5e5;
+}
+.btn-default {
+    width: 80%;
+}
+
+.modal-close {
+    margin-left: 0;
 }
 
 .commentsDiv{
@@ -289,6 +308,7 @@
     margin-left: 3%;
     border-bottom-right-radius: 90px;
     border-bottom-left-radius: 90px;
+
 }
 
  .bottom-nav-bar {

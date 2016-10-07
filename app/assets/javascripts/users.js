@@ -26,8 +26,8 @@ $(document).on("ready", function(){
 		document.getElementById('projects-slider').classList.toggle('closed');
 	});
 
-	$("#js-projects-close").on("click", function(){
-		document.getElementById('projects-slider').classList.toggle2('closed');
+	$(".project-whiteDiv").on("click", "#js-projects-close", function(){
+		document.getElementById('projects-slider').classList.toggle('closed');
 	});
 
 
@@ -84,7 +84,7 @@ $(document).on("ready", function(){
 
 	function showProjects(response, clientName){
 		// console.log(response);
-		var $projectList = $(".clients-projects");
+		var $projectList = $(".user-clients-projects");
 		$projectList.empty();
 		var $projectWhiteDiv = $(".project-whiteDiv");
 		var closeButton = `<img src="/assets/close_button.png" id="js-projects-close">`;
@@ -92,7 +92,7 @@ $(document).on("ready", function(){
 		response.forEach(function(project){
 
 			var html = ` 						
-						<li  class= "js-one-project" data-project-id=${project.id}
+						<li  class= "js-user-one-project" data-project-id=${project.id}
 							data-project-name=${project.name}>
 							<p> ${project.name} </p>
 						</li>
@@ -111,15 +111,16 @@ $(document).on("ready", function(){
 
 
 
-	$(".clients-projects").on("click", ".js-one-project", function(){
+	$(".user-clients-projects").on("click", ".js-user-one-project", function(){
 		document.getElementById('project-main-display-slider').classList.toggle('closed');
 	});
 
-	$("#js-project-main-close").on("click", function(){
+	$(".project-main-display-slider").on("click", "#js-project-main-close", function(){
+		var $
 		document.getElementById('project-main-display-slider').classList.toggle('closed');
 	});
 
-	$(".clients-projects").on("click", ".js-one-project", function(event){
+	$(".user-clients-projects").on("click", ".js-user-one-project", function(event){
 		var projectName = $(event.currentTarget).data("project-name");
 		var projectId = $(event.currentTarget).data("project-id");
 		var clientId = $("#projects-slider").data("client");
@@ -192,7 +193,7 @@ $(document).on("ready", function(){
 		$projectMainDisplay.append(projectsCloseButton);
 	 }
 
-	 $(".clients-projects").on("click", ".js-one-project", function(event){
+	 $(".user-clients-projects").on("click", ".js-user-one-project", function(event){
 		var projectName = $(event.currentTarget).data("project-name");
 		var projectId = $(event.currentTarget).data("project-id");
 		var clientId = $("#projects-slider").data("client");
@@ -251,6 +252,7 @@ $(document).on("ready", function(){
 		});
 		
 		function projectTypeNames(response, projectId){
+
 			var typeOptions = ""
 			
 			response.forEach(function(type){
@@ -264,7 +266,8 @@ $(document).on("ready", function(){
 
 			});
 		
-			var $projectImages = $(".imagesDiv");
+			var $projectImageUpload = $(".image-upload-form-div");
+			 $projectImageUpload.empty();
 
 			var html = `
 				<div class="container-space"></div>
@@ -295,7 +298,7 @@ $(document).on("ready", function(){
 				  </div>
 				</form>
 				`;
-				$projectImages.prepend(html);
+				$projectImageUpload.prepend(html);
 
 		}
 	
@@ -310,7 +313,6 @@ $(document).on("ready", function(){
 		})
 				
 	} 
-
 	
 	function submitImageThumbnail(projectId){
 		// $(document).on("ajax:success", function(){
@@ -338,23 +340,24 @@ $(document).on("ready", function(){
 						var idToAdd = singleResponse.name						
 
 
-						var new_image= `<img src="${newUrl}" id="${idToAdd}" style="width:10%; height:10%"> `;
+						var new_image= `<img src="${newUrl}" id="${idToAdd}" style="width:15%; height:10%">`;
 						$thumbnailGallery.append(new_image);		  
 							
 						});
 					
-					
 	}
 
+	$(".thumbnailGalleryDiv").on("click", "[data-thumnbnail-id]", function(event){
+		var data_id = $(event.currentTarget).attr('data-thumnbnail-id')
+		console.log(data_id);
+		var $imageModal = $(".modal-body")
+		$imageModal.empty();
+		var imageSource = $(event.currentTarget).attr('src')
+		console.log(imageSource);
+		newImageTag = `<img src="${imageSource}" style="width: 100%;">`;
+		$imageModal.append(newImageTag);
+		$("#imagemodal").modal('show');
+	})
 
-
-
-	// function recentThumbnailGallery(response) {
-	// 	console.log(response);
-	// }
-// get request to get last thumbnail created thumbnail.last
-// append thumbnail gallery to put las thumbnail created
-
-//only most recent one with that name
 
 });	
