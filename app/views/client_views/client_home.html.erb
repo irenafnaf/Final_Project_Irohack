@@ -1,4 +1,4 @@
-<div class="buttons-bar">
+<div class="clients-buttons-bar">
 
 	<div class="new-project-slider closed" id="new-project-slider">
 		<input type="image" src= "/assets/newproject_button.png" id="js-newproject"></input> 
@@ -10,32 +10,32 @@
 </div>
 
 <div class="newproject-form" >
-	<p class="headline" style="font-family:'Caviar Dreams'">Create Your New Project</p>
+	<p class="headline">Create Your New Project</p>
 		<form id="js-newproject-form" data-client="<%=@client.id%>">
-			<input id="js-name" type="text" class="js-required" name="name" placeholder="Enter Name" style="font-family:'Caviar Dreams';"> 
+			<input id="js-name" type="text" class="js-required" name="name" placeholder="Enter Name"> 
 			<br>
 			<div id="js-dropdowns">
-				<select id="js-one-dropdown" data-dropdown="0" class="js-required form-control" style="width:60%;font-family:'Caviar Dreams';">
+				<select id="js-one-dropdown" data-dropdown="0" class="js-required form-control" style="width:60%;">
 					  <% @types.each do |type| %>
 					  <option id="js-type" value="<%=type.id%>"> <%=type.name%> </option>
 					  <% end %> 
 				</select>
 				
 			</div>
-			<p class="add-type" style="font-family:'Caviar Dreams'"> Add Type </p>
+			<p class="add-type"> Add Type </p>
 
-			<input id="js-description" type="text" class="js-required" style="font-family:'Caviar Dreams';" name="description" placeholder="Description"> 
+			<input id="js-description" type="text" class="js-required" name="description" placeholder="Description"> 
 			<br>
-			<input id="js-due_date" type="date" class="js-required" name="due_date" style="font-family:'Caviar Dreams';" placeholder="Due Date">
+			<input id="js-due_date" type="date" class="js-required" name="due_date" placeholder="Due Date">
 			<br>
 
-			<button id="js-submit" type="submit" style="font-family:'Caviar Dreams';" value="Submit"> Submit </button>
+			<button id="js-submit" type="submit" value="Submit"> Submit </button>
 		</form> 
 </div>
 
 <div class="client-projects-slider closed" id="client-projects-slider" data-client="<%=@client.id%>"> 
 	<div class="project-whiteDiv">
-		<ul  class="clients-projects" style="font-family:'Caviar Dreams';">
+		<ul  class="clients-projects">
 		</ul>
 	</div>
 </div>

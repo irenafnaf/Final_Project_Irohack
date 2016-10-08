@@ -3,6 +3,7 @@ class CommentController < ApplicationController
 		project = Project.find_by(id: params[:project_id])
 		client = Client.find_by(id: params[:id])
 		comment = Comment.find_by(id: params[:id])
+		# project.comments.all
 	end
 
 	def create

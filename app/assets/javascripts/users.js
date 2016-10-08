@@ -270,7 +270,7 @@ $(document).on("ready", function(){
 
 			var html = `
 				<div class="container-space"></div>
-				<div class="infoTitle BoldText" style="font-size:20px;"> Images </div>
+				<div class="infoTitle BoldText" style="font-size:20px; margin-top: 2%;"> Images </div>
 				
 				<form class="new_thumbnail" id="new_thumbnail" data-projectId="${projectId}" enctype="multipart/form-data" 
 				action="/api/projects/1/thumbnails" data-remote="true" accept-charset="UTF-8" method="post">
@@ -368,18 +368,9 @@ $(document).on("ready", function(){
 		var clientId = $("#projects-slider").data("client");
 		console.log(projectName)
 		console.log(projectId)
-		// $.ajax({
-		// 	type: "GET",
-		// 	url: `/api/clients/${clientId}/projects/${projectId}`,
-		// 	success: function(response){
-		// 		showProjectInfo(response);
-		// 	},
-		// 	error: function(error){
-		// 		console.log(error);
-		// 	}
-		// });
 
 		$comments = $(".commentsDiv");
+		$comments.empty();
 		var comments_table = ` <div class="container-space"></div>
 							<div class="infoTitle BoldText" style="font-size:20px;"> Comments </div>
 

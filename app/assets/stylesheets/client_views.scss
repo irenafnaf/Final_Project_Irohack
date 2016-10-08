@@ -2,10 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
- .buttons-bar{
+ .clients-buttons-bar{
     z-index: 10;
     display: block;
-    margin-left: 25%;
+    margin-left: 40%;
     margin-right: auto;
     margin-bottom: 25px;
     width: 50%;
@@ -28,10 +28,12 @@
 	position: relative;
 	width: 50%;
 	margin: 0 auto;
-	margin-top: -2%;
+	margin-top: -1%;
 	background: white;
     border-radius: 25px;
     text-align: center;
+    overflow-y: scroll;
+    height: 346px;
 	
 }
 .form-control {
@@ -45,6 +47,7 @@
 	color: #666667;
 	font-size: 30px;
 	font-weight: bolder;
+    margin-top: 1%;
 }
 
 #js-name {
@@ -98,6 +101,10 @@
  	display: inline-block;
  }
 
+ .add-type{
+    color: #666667;
+ }
+
  .add-type:hover {
 	 cursor: pointer;
      color: #3b4ba0;
@@ -109,14 +116,14 @@
 }
 
  .client-projects-slider {
- 	z-index: 15;
+ 	z-index: 9;
  	display: inline-block;
  	position: absolute;
  	background-image: url("/assets/client_projects_slideout.png");
  	width: 563px;
  	height: 452px;
  	top: 211px;
- 	left: 45%;
+ 	left: 44%;
  	overflow-y: hidden;
 	max-height: 452px; /* approximate max height */
 	margin-left: 5px;
@@ -171,7 +178,7 @@
 }
 
 .client-project-main-display-slider {
-	z-index: 15;
+	z-index: 9;
  	position: absolute;
  	background-image: url("/assets/client_display_board.png");
  	display: block;
@@ -180,7 +187,7 @@
     margin-left: 17%;
     margin-right: auto;
     margin-bottom: 25px;
-    margin-top: -29%; 
+    margin-top: -32.4%; 
     overflow-y: hidden;
 	max-height: 535px; /* approximate max height */
 
@@ -231,7 +238,7 @@
     margin-left: 40%;
     color: #666667;
     text-align: left;
-    margin-top: 1%;
+    margin-top: 2%;
 }
 
 .BoldText {

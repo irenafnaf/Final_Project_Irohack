@@ -292,18 +292,9 @@ $(document).on("ready", function(){
 		var clientId = $("#projects-slider").data("client");
 		console.log(projectName)
 		console.log(projectId)
-		// $.ajax({
-		// 	type: "GET",
-		// 	url: `/api/clients/${clientId}/projects/${projectId}`,
-		// 	success: function(response){
-		// 		showProjectInfo(response);
-		// 	},
-		// 	error: function(error){
-		// 		console.log(error);
-		// 	}
-		// });
 
 		$clientsComments = $(".clientsCommentsDiv");
+		$clientsComments.empty();
 		var comments_table = ` <div class="container-space"></div>
 							<div class="infoTitle BoldText" style="font-size:20px;"> Comments </div>
 

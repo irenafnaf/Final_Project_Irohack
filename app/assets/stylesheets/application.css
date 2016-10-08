@@ -21,39 +21,11 @@
 	max-width: 100%;
 	max-height: 100%;
 	clear: both;
+	 font-family: 'Futura Std';
+ 	src: url('future.eot') 
 
 }
 
-@font-face {
-font-family: 'Caviar Dreams';
-font-style: normal;
-font-weight: normal;
-src: local('Caviar Dreams'), url('CaviarDreams.woff') format('woff');
-}
-
-
-@font-face {
-font-family: 'Caviar Dreams Bold Italic';
-font-style: normal;
-font-weight: normal;
-src: local('Caviar Dreams Bold Italic'), url('CaviarDreams_BoldItalic.woff') format('woff');
-}
-
-
-@font-face {
-font-family: 'Caviar Dreams Bold';
-font-style: normal;
-font-weight: normal;
-src: local('Caviar Dreams Bold'), url('CaviarDreams_Bold.woff') format('woff');
-}
-
-
-@font-face {
-font-family: 'Caviar Dreams Italic';
-font-style: normal;
-font-weight: normal;
-src: local('Caviar Dreams Italic'), url('CaviarDreamsItalic.woff') format('woff');
-}
 
 .container-fluid {
 	margin-top: 20px;
