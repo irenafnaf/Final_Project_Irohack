@@ -43,9 +43,9 @@ class ProjectsController < ApplicationController
 		project = Project.find_by(id: params[:id])
 
 		if project.destroy
-			render json: sandwich
+			render json: project
 		else
-			rendor json: {error: "Project Not Fount"},
+			rendor json: {error: "Project Not Found"},
 			status: 404
 		end
 	end

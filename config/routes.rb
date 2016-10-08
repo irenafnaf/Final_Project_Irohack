@@ -18,6 +18,10 @@ Rails.application.routes.draw do
   get '/api/types' => "types#index"
   get '/api/projects/:project_id/types' => "project_types#index"
 
+scope '/api' do
+  resources :comments, only: [:index, :create, :destroy]
+  end 
+
 
   
 end

@@ -6,6 +6,10 @@ $(document).on("ready", function(){
 		this.src="/assets/newproject_button.png"
 	});
 
+	$(".project-whiteDiv").on("click", "#js-client-projects-close", function(){
+		document.getElementById('client-projects-slider').classList.toggle('closed');
+	});
+
 	function getTypes(response){
 		$.ajax({
 			type: "GET",
@@ -93,7 +97,7 @@ $(document).on("ready", function(){
 
 	$("#js-client-projects-button").mouseover(function(){
 
-		var clientId = $("#projects-slider").data("client")
+		var clientId = $("#client-projects-slider").data("client")
 		
 		$.ajax({
 			type: "GET",
@@ -107,7 +111,7 @@ $(document).on("ready", function(){
 			}
 		});
 
-		document.getElementById('projects-slider').classList.toggle('closed');
+		document.getElementById('client-projects-slider').classList.toggle('closed');
 
 	});	
 
@@ -116,6 +120,10 @@ $(document).on("ready", function(){
 		// console.log(response);
 		var $projectList = $(".clients-projects");
 		$projectList.empty();
+
+		var $projectWhiteDiv = $(".project-whiteDiv");
+		var projectListCloseButton = `<img src="/assets/close_button.png" id="js-client-projects-close">`;
+
 		response.forEach(function(project){
 
 			var html = ` 						
@@ -127,6 +135,8 @@ $(document).on("ready", function(){
 
 			$projectList.append(html);
 		});
+
+		$projectWhiteDiv.append(projectListCloseButton);
 	}
 
 	function projectsError(error){
@@ -135,6 +145,10 @@ $(document).on("ready", function(){
 	}
 
 	$(".clients-projects").on("click", ".js-one-project", function(){
+		document.getElementById('client-project-main-display-slider').classList.toggle('closed');
+	});
+
+	$(".client-project-main-display-slider").on("click", "#js-client-project-main-close", function(){
 		document.getElementById('client-project-main-display-slider').classList.toggle('closed');
 	});
 
@@ -160,6 +174,10 @@ $(document).on("ready", function(){
 		// console.log(response);
 		var $projectInfo = $(".project-info");
 		$projectInfo.empty();
+
+		var $clientProjectMainDisplay = $(".client-project-main-display-slider");
+		var clientsProjectsCloseButton = `<img src="/assets/close_button.png" id="js-client-project-main-close">`;
+
 		var types = response.types
 		// console.log(types)
 		var all_types = "";
@@ -204,9 +222,117 @@ $(document).on("ready", function(){
 					</div>
 					`;
 		$projectInfo.append(html);
+		$clientProjectMainDisplay.append(clientsProjectsCloseButton);
 	}
 
+	 $(".clients-projects").on("click", ".js-one-project", function(event){
+		var projectName = $(event.currentTarget).data("project-name");
+		var projectId = $(event.currentTarget).data("project-id");
+		var clientId = $("#projects-slider").data("client");
+		// console.log(projectName)
+		// console.log(projectId)
+		$.ajax({
+			type: "GET",
+			url: `/api/projects/${projectId}/thumbnails`,
+			success: function(response){
+				// console.log(projectId);
+				showThumbnailGallery(projectId, response);	
+				// console.log(response);
+			},
+			error: function(error){
+				console.log(error);
+			}
+		});
+	});
 
+	function showThumbnailGallery(projectId, response){
+		// console.log(response);
+		var $titleDiv = $(".title-div");
+		$titleDiv.empty();
+		var headline = `
+				<div class="client-infoTitle BoldText" style="font-size:20px;"> Images </div>`;
+		$titleDiv.append(headline);
+		
+		var $thumbnailGallery = $(".thumbnailGalleryDiv");
+		$thumbnailGallery.empty();
+
+		var gallery = response.forEach(function(singleResponse){
+						var url = singleResponse.image.url
+						// console.log(url);
+						var idForImg = singleResponse.name
+						// console.log(idForImg)
+
+
+						var html= `<img src="${url}" id="imageresource" class="project-thumbnail" data-thumnbnail-id="${idForImg}" 
+									style="width:25%;"> `;
+						$thumbnailGallery.append(html);		  
+					});
+		// console.log(response);
+	}
+
+	$(".thumbnailGalleryDiv").on("click", "[data-thumnbnail-id]", function(event){
+		var data_id = $(event.currentTarget).attr('data-thumnbnail-id')
+		console.log(data_id);
+		
+		var $imageModal = $(".modal-body")
+		$imageModal.empty();
+		
+		var imageSource = $(event.currentTarget).attr('src')
+		// console.log(imageSource);
+		
+		newImageTag = `<img src="${imageSource}" style="width: 100%;">`;
+		
+		$imageModal.append(newImageTag);
+		$("#imagemodal").modal('show');
+	});
+
+	$(".clients-projects").on("click", ".js-one-project", function(event){
+		var projectName = $(event.currentTarget).data("project-name");
+		var projectId = $(event.currentTarget).data("project-id");
+		var clientId = $("#projects-slider").data("client");
+		console.log(projectName)
+		console.log(projectId)
+		// $.ajax({
+		// 	type: "GET",
+		// 	url: `/api/clients/${clientId}/projects/${projectId}`,
+		// 	success: function(response){
+		// 		showProjectInfo(response);
+		// 	},
+		// 	error: function(error){
+		// 		console.log(error);
+		// 	}
+		// });
+
+		$clientsComments = $(".clientsCommentsDiv");
+		var comments_table = ` <div class="container-space"></div>
+							<div class="infoTitle BoldText" style="font-size:20px;"> Comments </div>
+
+							<table class="comments-table">
+								<tbody>
+									<tr class="table-top-row">
+										<td style="width: 12%;">&nbsp;Date</td>
+										<td style="width: 16%;">&nbsp;By</td>
+										<td style="width: 60%;">&nbsp;Comments</td>
+										<td style="width: 10%;">&nbsp;</td>
+									</tr>
+									<tr class="next-row">
+										<td style="width: 135px;">&nbsp;</td>
+										<td style="width: 239px;">&nbsp;</td>
+										<td style="width: 761px;">&nbsp;
+											<textarea name="comment-body" id="comments-id" rows="2" cols="30">
+											
+											</textarea>
+										</td>
+										<td style="width: 203px;">&nbsp;<p class="insert-comment">Insert</p></td>
+									</tr>
+								</tbody>
+							</table>`;
+		$clientsComments.append(comments_table);					
+
+
+	});
+
+	
 
 	
 

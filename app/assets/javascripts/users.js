@@ -116,7 +116,6 @@ $(document).on("ready", function(){
 	});
 
 	$(".project-main-display-slider").on("click", "#js-project-main-close", function(){
-		var $
 		document.getElementById('project-main-display-slider').classList.toggle('closed');
 	});
 
@@ -349,15 +348,67 @@ $(document).on("ready", function(){
 
 	$(".thumbnailGalleryDiv").on("click", "[data-thumnbnail-id]", function(event){
 		var data_id = $(event.currentTarget).attr('data-thumnbnail-id')
-		console.log(data_id);
+		// console.log(data_id);
+		
 		var $imageModal = $(".modal-body")
 		$imageModal.empty();
+		
 		var imageSource = $(event.currentTarget).attr('src')
-		console.log(imageSource);
+		// console.log(imageSource);
+		
 		newImageTag = `<img src="${imageSource}" style="width: 100%;">`;
+		
 		$imageModal.append(newImageTag);
 		$("#imagemodal").modal('show');
 	})
+
+	$(".user-clients-projects").on("click", ".js-user-one-project", function(event){
+		var projectName = $(event.currentTarget).data("project-name");
+		var projectId = $(event.currentTarget).data("project-id");
+		var clientId = $("#projects-slider").data("client");
+		console.log(projectName)
+		console.log(projectId)
+		// $.ajax({
+		// 	type: "GET",
+		// 	url: `/api/clients/${clientId}/projects/${projectId}`,
+		// 	success: function(response){
+		// 		showProjectInfo(response);
+		// 	},
+		// 	error: function(error){
+		// 		console.log(error);
+		// 	}
+		// });
+
+		$comments = $(".commentsDiv");
+		var comments_table = ` <div class="container-space"></div>
+							<div class="infoTitle BoldText" style="font-size:20px;"> Comments </div>
+
+							<table class="comments-table">
+								<tbody>
+									<tr class="table-top-row">
+										<td style="width: 12%;">&nbsp;Date</td>
+										<td style="width: 16%;">&nbsp;By</td>
+										<td style="width: 60%;">&nbsp;Comments</td>
+										<td style="width: 10%;">&nbsp;</td>
+									</tr>
+									<tr class="next-row">
+										<td style="width: 135px;">&nbsp;</td>
+										<td style="width: 239px;">&nbsp;</td>
+										<td style="width: 761px;">&nbsp;
+											<textarea name="comment-body" id="comments-id" rows="2" cols="30">
+											
+											</textarea>
+										</td>
+										<td style="width: 203px;">&nbsp;<p class="insert-comment">Insert</p></td>
+									</tr>
+								</tbody>
+							</table>`;
+		$comments.append(comments_table);					
+
+
+	});
+
+
 
 
 });	

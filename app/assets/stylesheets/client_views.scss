@@ -104,12 +104,12 @@
      text-decoration:underline;
 }
 
-.projects-slider.closed {
+.client-projects-slider.closed {
 	max-height: 0;
 }
 
- .projects-slider {
- 	z-index: 100;
+ .client-projects-slider {
+ 	z-index: 15;
  	display: inline-block;
  	position: absolute;
  	background-image: url("/assets/client_projects_slideout.png");
@@ -137,6 +137,14 @@
     overflow-y: scroll;
  }
 
+ #js-client-projects-close {
+    position: absolute;
+    float: left;
+    top: 28%;
+    left: 82%;
+    opacity: 0.5;
+ }
+
  .clients-projects {
  	margin-top: 4%;
  	color: #666667;
@@ -149,6 +157,14 @@
      color: #3b4ba0;
      text-decoration:underline;
 }
+
+ #js-client-project-main-close {
+    position: absolute;
+    top: 22%;
+    right: 40%;
+    z-index: 250;
+    opacity: 0.5;
+ }
 
 .client-project-main-display-slider.closed {
 	max-height: 0;
@@ -164,7 +180,7 @@
     margin-left: 17%;
     margin-right: auto;
     margin-bottom: 25px;
-    margin-top: -29.6%; 
+    margin-top: -29%; 
     overflow-y: hidden;
 	max-height: 535px; /* approximate max height */
 
@@ -210,10 +226,12 @@
     color: #666667;
 }
 
-.infoTitle{
+.client-infoTitle{
 	font-size: 20px;
     margin-left: 40%;
     color: #666667;
+    text-align: left;
+    margin-top: 1%;
 }
 
 .BoldText {
@@ -231,6 +249,18 @@
     color: #3b4ba0;
     text-decoration:underline;
     display: inline;
+}
+
+.clientsCommentsDiv{
+    background: white;
+    width: 93%;
+    height: 34%;
+    display: inline-block;
+    margin-top: 15px;
+    margin-left: 3%;
+    border-bottom-right-radius: 90px;
+    border-bottom-left-radius: 90px;
+
 }
 
  .bottom-nav-bar {

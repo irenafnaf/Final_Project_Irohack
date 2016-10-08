@@ -33,7 +33,7 @@
 		</form> 
 </div>
 
-<div class="projects-slider closed" id="projects-slider" data-client="<%=@client.id%>"> 
+<div class="client-projects-slider closed" id="client-projects-slider" data-client="<%=@client.id%>"> 
 	<div class="project-whiteDiv">
 		<ul  class="clients-projects" style="font-family:'Caviar Dreams';">
 		</ul>
@@ -46,14 +46,34 @@
 	</div>
 	
 	<div class="imagesDiv">
+		<div class="title-div">
+		</div>
 		<div class="thumbnailGalleryDiv">
 		</div>
 	</div>
 
-	<div class="commentsDiv">
+	<div class="clientsCommentsDiv">
 	</div>
 </div>
 
 <div class="bottom-nav-bar">
 	<input type="image" src= "/assets/logout_button.png" class="logout"> </input> 
+</div>
+
+
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="width: 70%;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel" style="text-align: center;">Preview</h4>
+      </div>
+      <div class="modal-body">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default modal-close" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>

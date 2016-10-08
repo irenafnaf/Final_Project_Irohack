@@ -311,6 +311,37 @@
 
 }
 
+.comments-table {
+	width: 91%;
+	margin: 0 auto;
+	border-collapse: collapse;
+	margin-top: 0.5%;
+}
+
+.table-top-row {
+	background-color: #aeafaf;
+	height: 25px;
+}
+.next-row{
+	height: 25px;
+
+}
+
+.next-row td {
+    padding: 2px 6px !important;
+    border: 1px #aeafaf solid !important;
+}
+
+#comments-id {
+	width: 95%;
+    margin: 4px;
+}
+.insert-comment:hover {
+	cursor: pointer;
+    color: #3b4ba0;
+    text-decoration:underline;
+}
+
  .bottom-nav-bar {
  	position: relative;
     float: right;
