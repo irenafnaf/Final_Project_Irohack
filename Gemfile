@@ -21,6 +21,7 @@ gem 'coffee-rails', '~> 4.2'
 # gem 'therubyracer', platforms: :ruby
 gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick', '~> 4.3'
+gem 'sprockets-es6'
 gem 'remotipart'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
