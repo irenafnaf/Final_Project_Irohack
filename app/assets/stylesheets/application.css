@@ -26,6 +26,7 @@ body {
 	clear: both;
 	font-family: 'Futura Std';
 	src: url('future.eot'); 
+	background-color:transparent;
 }
 
 
@@ -69,6 +70,11 @@ width:35%;
 	height: 534px;
 }
 footer{
+	background-color:white;
+	margin-top:20px;
+	padding:25px;
+}
+/*footer{
 position: relative;
 display: block;
 width: 100%;
@@ -76,7 +82,7 @@ margin: 0 auto;
 z-index: 100;
 box-sizing: border-box;
 bottom: -442px;
-}
+}*/
 
 .footer-inner{
 	position: relative;
@@ -89,6 +95,10 @@ bottom: -442px;
 .footer-top-holder{
 	background-color: white;
 
+}
+.column-bar{
+	/*border-right:1px solid black;*/
+	height: 100%;
 }
 
 /*.container {
@@ -125,9 +135,15 @@ bottom: -442px;
 }
 
 .logo {
-	max-width: 332px;
-	margin-bottom: 14px;
-	height: auto;
+	width:100%;
+	margin-bottom:20px;
+	/*max-width: 332px;*/
+	/*margin-bottom: 14px;*/
+	/*height: auto;*/
+}
+.padding-image{
+
+	padding: 0 20px;
 }
 
 .footer-widget-title {
