@@ -1,16 +1,34 @@
-
-	<div class="buttons-bar">
-		<input type="image" src= "/assets/addclient_button.png" class="add-client"> </input> 
-		<input type="image" src= "/assets/addpricing_button.png" class="add-pricing"> </input> 
-		<input type="image" src= "/assets/clients_button.png" id="js-getclients"></input> 
-		
-		<div class="slider closed" id="slider">
-			<img src= "/assets/projects_button.png" id="js-projects-button">
+<div class="container  container-buttons buttons-bar">
+	<div class="row">
+		<div class="col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+				<input type="image" src= "/assets/addclient_button.png" class="add-client"> </input> 
+				<input type="image" src= "/assets/addpricing_button.png" class="add-pricing"> </input> 
+				<input type="image" src= "/assets/clients_button.png" id="js-getclients"></input> 
+			
+			    <div class="slider closed" id="slider">
+				 <img src= "/assets/projects_button.png" id="js-projects-button">
+			    </div>	
+     	   
 		</div>	
 	</div>
+	<div class="row">
+		<div class="col-sm-6 col-sm-offset-3">
+			<div class = "clients-text closed" id="clients-text">
+
+				<ul id = "js-clients">
+				</ul>
+			</div>
+	    </div>
+    </div>
+</div>
 
 
-<div class="projects-slider closed" id="projects-slider" data-client="<%=@client.id%>"> 
+
+
+	
+
+
+<!-- <div class="projects-slider closed" id="projects-slider" data-client="<%=@client.id%>"> 
 
 
 	<div class="project-whiteDiv">
@@ -37,11 +55,7 @@
 	</div>
 </div>
 
-<div class = "clients-text">
 
-			<ul id = "js-clients">
-			</ul>
-</div>
 
 
 <div class="bottom-nav-bar">
@@ -64,6 +78,6 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 

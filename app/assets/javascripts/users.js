@@ -11,7 +11,7 @@ $(document).on("ready", function(){
 	// });
 
 	$("#js-getclients").mouseover(function(){
-		$(".clients-text").css("visibility", "visible");
+		document.getElementById('clients-text').classList.remove('closed');
 	});
 
 	$("#js-getclients").mouseover(function(){

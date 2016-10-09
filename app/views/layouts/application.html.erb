@@ -16,20 +16,32 @@
   <body>
 
       <div class = "container-fluid">
-        <img class= "center-block" src = "/assets/frelans_logo.png" >
-        <img class= "bar" src = "/assets/bar.png">
-      </div>
+      <!-- Logo -->
+        <div class="row padding-logo">
+          <img class= "center-block" src = "/assets/frelans_logo.png" >
+          <img class= "bar" src = "/assets/bar.png">
+        </div>
+      
+      <!-- Display Board -->
+        <div class="row board-container">
+          <div class="col-sm-8 col-sm-offset-2 ">
+              <img class= "display-board" src = "/assets/dashboard_display_board.png">
+           </div>
+        </div>
 
-      <div class = "display-board">
-      <img class= "center block" src = "/assets/dashboard_display_board.png">
+
       </div>
+      
+      <!-- <div class = "display-board"> -->
+     
+  
 
 
     <%= yield %>
 
 
-  <footer>
-    <div class="footer-inner clearfix">
+  <!-- <footer> -->
+  <!--   <div class="footer-inner clearfix">
       <div class="footer-top-holder">
         <div class="footer-top">
           <div class="container">
@@ -90,7 +102,7 @@
         </div>
       </div>
     </div>
-  </footer>
+  </footer> -->
     
 
 
