@@ -14,6 +14,9 @@
  *= require_self
  */
 
+html, body {
+    height: 100%;
+}
 
 html{
 	/*height:100%;*/
@@ -50,7 +53,7 @@ width:35%;
 .display-board{
 	/*z-index:1;*/
 	width:100%;
-	height:100%;
+	height:350px;
 	/*position: absolute;*/
 	/*display: block;*/
 	/*margin-left: 17%;*/
@@ -66,14 +69,15 @@ width:35%;
 	margin-top: 11px;
 	width: 100%;
 }
-.board-container{
+/*.board-container{
 	height: 534px;
-}
+}*/
 footer{
 	background-color:white;
 	margin-top:20px;
 	padding:25px;
 }
+
 /*footer{
 position: relative;
 display: block;
@@ -158,7 +162,54 @@ bottom: -442px;
 	text-align: center;
 }
 
+.page-wrap {
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -232px; 
+}
 
- 
+.page-wrap:after {
+  content: "";
+  display: block;
+}
+.sticky-footer, .page-wrap:after {
+  height: 232px; 
+}
+
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+	.container-buttons{
+
+    		top:110px;
+    }
+ }
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+	.container-buttons{
+
+    		top:132px;
+    }
+ }
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+	.container-buttons{
+
+    		top:172px;
+    }
+    #js-clients{
+ 	  height:357px;
+ 	
+     }
+     .display-board{
+		height:534px;
+     }
+     .clients-text{
+     	width:100%;
+
+     }
+}
 
 

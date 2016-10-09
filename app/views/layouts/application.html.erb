@@ -11,10 +11,12 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
 
   <body>
-
+    <div class="page-wrap">
       <div class = "container-fluid">
       <!-- Logo -->
         <div class="row padding-logo">
@@ -35,12 +37,13 @@
       <!-- <div class = "display-board"> -->
      
   
+  
+
+      <%= yield %>
+  </div>
 
 
-    <%= yield %>
-
-
-  <footer>
+  <footer class="sticky-footer">
     <div class="container-fluid">
       <div class="row">
 

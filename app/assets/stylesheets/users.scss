@@ -14,7 +14,10 @@
     // z-index: 23;
     width:100%;
     position: absolute;
-    top: 172px;
+    top:73px;
+    
+//Para pantalla grande 
+    // top: 130px;
     // display: inline-block;
     // width: 100%;
     // position: relative;
@@ -62,7 +65,8 @@
     // margin-bottom: 25px;
     // margin-top: 7%;
     // width: 50%;
-    width:100%;
+    width:80%;
+    margin: 0 auto;
     background-color: white;
     // height: 357px;
     // left: 355px;
@@ -82,8 +86,9 @@
  	color: #666667;
  	margin-top: 23px;
  	list-style-type: none;
- 	height:	357px;
+ 	height:	180px;
  	overflow: scroll;
+ 	width:80%;
 
 
  }
