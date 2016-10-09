@@ -192,7 +192,7 @@
 }
 
  .project-main-display-slider {
-	z-index: 22;
+	z-index: 27;
  	position: absolute;
  	background-image: url("/assets/user_display_board.png");
  	display: block;
@@ -201,7 +201,7 @@
     margin-left: 17%;
     margin-right: auto;
     margin-bottom: 25px;
-    margin-top: -7.4%;
+    top: 22%;
     overflow-y: hidden;
 	max-height: 535px; /* approximate max height */
 
@@ -372,9 +372,9 @@
 }
 
  .bottom-nav-bar {
- 	position: relative;
-    float: right;
-    bottom: 51px;
+ 	position: absolute;
+    bottom: 50px;
+    right: 0;
     z-index: 100;
  }
 
