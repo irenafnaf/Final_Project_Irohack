@@ -207,7 +207,12 @@ bottom: -442px;
 		height:534px;
      }
      .clients-text{
-     	width:100%;
+     	width:49%;
+     	margin-left: 27%;
+		margin-right: auto;
+    	margin-bottom: 25px;
+    	margin-top: -29%;
+    	position: absolute;
 
      }
 }

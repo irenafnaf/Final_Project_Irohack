@@ -15,6 +15,7 @@
     width:100%;
     position: absolute;
     top:73px;
+    z-index: 28;
     
 //Para pantalla grande 
     // top: 130px;
@@ -23,6 +24,11 @@
     // position: relative;
     // margin-top: -11px;
     // margin-left: 25%;
+ }
+
+ .container-clients {
+ 	top: 40%;
+
  }
  
 
@@ -129,13 +135,13 @@
 }
 
  .projects-slider {
- 	z-index: 21;
+ 	z-index: 27;
  	display: inline-block;
  	position: absolute;
  	background-image: url("/assets/user_projects_slideout.png");
  	width: 563px;
  	height: 452px;
- 	top: 211px;
+ 	top: 173px;
  	left: 44%;
  	overflow-y: hidden;
 	max-height: 452px; /* approximate max height */
@@ -368,7 +374,7 @@
  .bottom-nav-bar {
  	position: relative;
     float: right;
-    bottom: -371px;
+    bottom: 51px;
     z-index: 100;
  }
 

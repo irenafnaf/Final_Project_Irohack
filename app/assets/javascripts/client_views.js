@@ -10,6 +10,11 @@ $(document).on("ready", function(){
 		document.getElementById('client-projects-slider').classList.toggle('closed');
 	});
 
+	$("#js-newproject").mouseover(function(){
+		document.getElementById('newproject-form').classList.toggle('closed');
+	});
+
+
 	function getTypes(response){
 		$.ajax({
 			type: "GET",

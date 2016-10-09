@@ -3,14 +3,18 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
  .clients-buttons-bar{
-    z-index: 10;
-    display: block;
-    margin-left: 40%;
-    margin-right: auto;
-    margin-bottom: 25px;
-    width: 50%;
-    position: relative;
-    margin-top: -11px; 
+    // z-index: 10;
+    // display: block;
+    // margin-left: 40%;
+    // margin-right: auto;
+    // margin-bottom: 25px;
+    // width: 50%;
+    // position: relative;
+    // margin-top: -11px; 
+    width:100%;
+    position: absolute;
+    top:172px;
+    z-index: 28;
  }
 
 
@@ -19,23 +23,32 @@
  	display: inline-block;
  	position: relative;
 	margin-left: 5px;
+ }
 
-
+ .newproject-form.closed {
+    max-height: 0;
  }
 
 .newproject-form {
 	z-index: 9;
-	position: relative;
+	position: absolute;
 	width: 50%;
 	margin: 0 auto;
-	margin-top: -1%;
+	margin-top: -29%;
 	background: white;
     border-radius: 25px;
     text-align: center;
-    overflow-y: scroll;
+    overflow: scroll;
     height: 346px;
-	
+    margin-left: 25%;
+    overflow-y: hidden;
+    max-height: 346px; /* approximate max height */
+
+    transition-property: all;
+    transition-duration: .6s;
+    transition-timing-function: ease-out;	
 }
+
 .form-control {
 	height: 25px;
 }
@@ -97,6 +110,8 @@
 	margin: 0 auto;
 }
 
+
+
  .new-project-slider {
  	display: inline-block;
  }
@@ -122,11 +137,11 @@
  	background-image: url("/assets/client_projects_slideout.png");
  	width: 563px;
  	height: 452px;
- 	top: 211px;
+ 	top: 173px;
  	left: 44%;
  	overflow-y: hidden;
 	max-height: 452px; /* approximate max height */
-	margin-left: 5px;
+	margin-left: -20px;
 
 	transition-property: all;
 	transition-duration: .6s;
