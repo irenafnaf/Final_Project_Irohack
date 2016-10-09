@@ -18,7 +18,7 @@ $(document).on("ready", function(){
 	function getTypes(response){
 		$.ajax({
 			type: "GET",
-			url: `http://localhost:3000/api/types`,
+			url: `/api/types`,
 			success: renderTypeNames,
 			error: function (error) {
 				console.log("Error!")
@@ -80,7 +80,7 @@ $(document).on("ready", function(){
 			console.log(newProject);
 			$.ajax({
 				type: "POST",
-				url: `http://localhost:3000/api/clients/${clientId}/projects`,
+				url: `/api/clients/${clientId}/projects`,
 				data: newProject,
 				success: function(success){
 				console.log("success!");
@@ -106,7 +106,7 @@ $(document).on("ready", function(){
 		
 		$.ajax({
 			type: "GET",
-			url: `http://localhost:3000/api/clients/${clientId}/projects`,
+			url: `/api/clients/${clientId}/projects`,
 			success: function(response){
 				showProjects(response);
 			},
@@ -165,7 +165,7 @@ $(document).on("ready", function(){
 		// console.log(projectId)
 		$.ajax({
 			type: "GET",
-			url: `http://localhost:3000/api/clients/${clientId}/projects/${projectId}`,
+			url: `/api/clients/${clientId}/projects/${projectId}`,
 			success: function(response){
 				showProjectInfo(response);
 			},

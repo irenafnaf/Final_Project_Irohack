@@ -34,7 +34,7 @@ $(document).on("ready", function(){
 	function getClients(){
 		$.ajax({
 			type: "GET",
-			url: `http://localhost:3000/api/clients`,
+			url: `/api/clients`,
 			success: function(response){
 				showClients(response);
 
