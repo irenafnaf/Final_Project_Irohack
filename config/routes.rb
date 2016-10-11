@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+	root :to => redirect('users/1')
   
   resources :users, only: [:show]
   resources :projects, only: [:index, :show], controller: "project_views"
